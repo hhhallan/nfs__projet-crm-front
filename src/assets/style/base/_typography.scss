@@ -1,4 +1,13 @@
 /* Headings */
+@mixin headings($font_size, $line, $font : 700){
+    font-size: $font_size;
+    line-height: $line;
+    font-weight: $font;
+}
+
+// =======================================
+
+
 h1{
     @include headings(5.6rem, 120%);
 }

@@ -1,13 +1,26 @@
+@mixin btnColor($color, $bgColor) {
+  color: $color;
+  background-color: $bgColor;
+}
+
+@mixin border($width: 1px, $color: red) {
+  border: solid $width $color;
+}
+
+// =======================================
+
 button {
-  @include btnColor($color--btn-white, $color--btn-purple);
+  @include btnColor(var(--clr-btn-white), var(--clr-btn-purple));
   font-size: 1.6rem;
   font-family: "Poppins", sans-serif;
   border-radius: 5px;
+  border: none;
   padding: 12px 24px;
+  cursor: pointer;
   transition: 0.3s;
 
   &:hover {
-    background-color: $color--btn-hover;
+    background-color: var(--clr-btn-hover);
   }
 
   &:active {
@@ -15,12 +28,12 @@ button {
   }
 
   &.btn--outline {
-    @include border(1px, $color--btn-purple);
-    @include btnColor($color--btn-purple, transparent);
+    @include border(1px, var(--clr-btn-purple));
+    @include btnColor(var(--clr-btn-purple), transparent);
 
     &:hover {
       border-color: transparent;
-      @include btnColor($color--btn-white, $color--btn-purple);
+      @include btnColor(var(--clr-btn-white), var(--clr-btn-purple));
     }
   }
 
