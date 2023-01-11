@@ -24,7 +24,12 @@ html {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
-
-  width: 1440px;
+  width: min(90%, 1440px);
   margin-inline: auto;
+  font-size: 1.6rem;
+}
+
+.pages {
+  width: 100%;
+  min-height: 100vh;
 }

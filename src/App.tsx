@@ -3,18 +3,22 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 // @ts-ignore
 import {Home, About} from "./pages/index";
-import {Navigation} from "./comopnents/index"
+import {Header, Navigation} from "./comopnents/index"
 
 
 const App = () => {
     return (
         <BrowserRouter>
             <div id="App">
-                <Navigation />
-                <Routes>
-                    <Route index element={<Home />} />
-                    <Route path="about" element={<About />} />
-                </Routes>
+                <Navigation/>
+
+                <div className="pages">
+                    <Header/>
+                    <Routes>
+                        <Route index element={<Home/>}/>
+                        <Route path="about" element={<About/>}/>
+                    </Routes>
+                </div>
             </div>
         </BrowserRouter>
     );

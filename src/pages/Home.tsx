@@ -1,10 +1,17 @@
 import React from 'react';
-import {Button} from "../comopnents";
+import {Button, Header} from "../comopnents";
+import {StatCard} from "../comopnents/cards/cards";
 
 const Home = () => {
     return (
         <div className="page page-home">
-            <Button />
+            <h5>Status</h5>
+            <section className="section-1">
+                <StatCard/>
+                <StatCard/>
+                <StatCard/>
+                <StatCard/>
+            </section>
         </div>
     );
 };
