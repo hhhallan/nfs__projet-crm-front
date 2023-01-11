@@ -3,3 +3,18 @@
     line-height: $line;
     font-weight: $font;
 }
+
+@mixin btnColor($color, $bgColor) {
+  color: $color;
+  background-color: $bgColor;
+}
+
+@mixin border($width: 1px, $color: red) {
+  border: solid $width $color;
+}
+
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
