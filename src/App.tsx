@@ -6,17 +6,16 @@ import {Home, About} from "./pages/index";
 import {Navigation} from "./comopnents/index"
 
 
-
 const App = () => {
     return (
         <BrowserRouter>
-            <header>
+            <div id="App">
                 <Navigation />
-            </header>
-            <Routes>
-                <Route index element={<Home />} />
-                <Route path="about" element={<About />} />
-            </Routes>
+                <Routes>
+                    <Route index element={<Home />} />
+                    <Route path="about" element={<About />} />
+                </Routes>
+            </div>
         </BrowserRouter>
     );
 };

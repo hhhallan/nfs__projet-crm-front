@@ -3,13 +3,8 @@ import {Button} from "../comopnents";
 
 const Home = () => {
     return (
-        <div>
-          Home Page
-
+        <div className="page page-home">
             <Button />
-            <Button small />
-            <Button outline />
-            <Button small outline />
         </div>
     );
 };
