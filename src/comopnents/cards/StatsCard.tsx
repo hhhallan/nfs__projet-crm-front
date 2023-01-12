@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 
-interface StatsProps {
-    title?: string,
-    data?: string,
-    percentage?: string
+interface StatsCardProps {
+    cardData: {
+        title?: string,
+        data?: string,
+        percentage?: string
+    };
 }
 
-const StatCard = ({data = "100k", percentage = "+100%", title = "Title"}:StatsProps) => {
+const StatsCard: React.FC<StatsCardProps> = ({cardData: {title, data, percentage}}) => {
     return (
         <div className="card card-stats">
             <p className="card-title">{title}</p>
@@ -18,4 +20,4 @@ const StatCard = ({data = "100k", percentage = "+100%", title = "Title"}:StatsPr
     );
 };
 
-export default StatCard;
+export default StatsCard;

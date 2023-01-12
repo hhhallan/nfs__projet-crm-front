@@ -1,16 +1,31 @@
 import React from 'react';
-import {Button, Header} from "../comopnents";
-import {StatCard} from "../comopnents/cards/cards";
+import {StatsCard} from '../comopnents/cards/index';
+
+const statsData = {
+    title: "titre",
+    data: "123k",
+    percentage: "-72%"
+}
+const devisData = {
+    title: "Devis",
+    data: "26",
+    percentage: "-72%"
+}
+
 
 const Home = () => {
     return (
         <div className="page page-home">
-            <h5>Status</h5>
-            <section className="section-2">
-                <StatCard/>
-                <StatCard/>
-                <StatCard/>
-                <StatCard/>
+            <h5>Stats</h5>
+            <section className="section">
+                <StatsCard cardData={devisData}/>
+                <StatsCard cardData={statsData}/>
+                <StatsCard cardData={statsData}/>
+                <StatsCard cardData={statsData}/>
+            </section>
+
+            <section className="section">
+
             </section>
         </div>
     );
