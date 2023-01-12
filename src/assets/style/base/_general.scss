@@ -21,10 +21,15 @@ html {
 }
 
 #App {
-  display: flex;
-  flex-direction: row;
+  //display: flex;
+  //flex-direction: row;
   min-height: 100vh;
+  font-size: 1.6rem;
+}
 
-  width: 1440px;
-  margin-inline: auto;
+.pages {
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  position: relative;
+  left: 250px;
 }

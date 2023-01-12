@@ -1,0 +1,12 @@
+.section {
+  --min: 10ch;
+  --gap: 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+
+  &> * {
+    flex: 1 1 var(--min);
+  }
+}
