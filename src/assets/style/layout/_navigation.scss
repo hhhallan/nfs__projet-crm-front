@@ -1,4 +1,22 @@
 .navigation {
   width: 200px;
-  background-color: palevioletred;
+  background-color: var(--clr-primary-light-grey);
+}
+.navigation-logo {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    padding: 3rem;
+    justify-content: center;
+}
+.navigation-link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.navigation-link a{
+    color: var(--clr-primary-dark);
+    font-size: 1.6rem;
+    text-decoration: none;
 }

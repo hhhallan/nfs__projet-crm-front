@@ -4,10 +4,14 @@ import {Link, NavLink} from "react-router-dom";
 const Navigation = () => {
     return (
         <nav className="navigation">
-            <h1>Router</h1>
-
-            <Link to="/">Home</Link>
-            <NavLink to="about">About</NavLink>
+            <div className="navigation-logo">
+                <img alt="logo" src="" />
+                <p>CRM</p>
+            </div>
+            <div className="navigation-link">
+                <Link to="/">Home</Link>
+                <NavLink to="about">About</NavLink>
+            </div>
         </nav>
     );
 };
