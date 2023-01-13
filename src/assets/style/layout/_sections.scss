@@ -5,6 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap);
+  margin: 25px 0;
 
   &> * {
     flex: 1 1 var(--min);

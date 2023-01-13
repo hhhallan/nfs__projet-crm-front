@@ -1,31 +1,16 @@
 import React from 'react';
-import {StatsCard} from '../comopnents/cards/index';
-
-const statsData = {
-    title: "titre",
-    data: "123k",
-    percentage: "-72%"
-}
-const devisData = {
-    title: "Devis",
-    data: "26",
-    percentage: "-72%"
-}
-
+import {StatsCard} from '../comopnents/index';
+import {statCards} from "../services/constants/statistics";
+import {Button} from "../comopnents";
 
 const Home = () => {
     return (
         <div className="page page-home">
             <h5>Stats</h5>
             <section className="section">
-                <StatsCard cardData={devisData}/>
-                <StatsCard cardData={statsData}/>
-                <StatsCard cardData={statsData}/>
-                <StatsCard cardData={statsData}/>
-            </section>
-
-            <section className="section">
-
+                {statCards.map((card, index) => (
+                    <StatsCard key={index} cardData={card}/>
+                ))}
             </section>
         </div>
     );

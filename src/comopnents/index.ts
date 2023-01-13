@@ -1,11 +1,11 @@
 import Navigation from "./Navigation";
 import Button from "./Button";
 import Header from "./Header";
-import Card from "./Cards";
+import StatsCard from "./cards/StatsCard";
 
 export {
     Navigation,
     Button,
     Header,
-    Card
+    StatsCard,
 }
