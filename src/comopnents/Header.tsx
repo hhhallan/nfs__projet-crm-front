@@ -1,10 +1,20 @@
 import React from 'react';
+import {useLocation} from "react-router-dom";
+
+const pathNameMapping : { [key: string]: string } = {
+    '/': 'Dashboard',
+    '/about': 'About',
+    '/contact': 'Contact'
+};
 
 const Header = () => {
+    const location = useLocation();
+    const pageName = pathNameMapping[location.pathname] || 'Not found';
+
 
     return (
         <header>
-            <p>Dashboard / Home</p>
+            <p>CRM -// {pageName}</p>
         </header>
     );
 };
