@@ -1,5 +1,7 @@
 header {
-  background-color: palegoldenrod;
-  padding: 30px;
+  --border: 2px;
+
+  padding: 30px 30px calc(30px - var(--border));
   font-size: 1.2rem;
+  border-bottom: solid 2px var(--clr-primary-dark);
 }
