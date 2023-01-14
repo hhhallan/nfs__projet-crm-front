@@ -1,11 +1,4 @@
-interface Stats {
-    id: number,
-    title: string,
-    data: string,
-    percentage: string
-}
-
-export const statCards: Stats[] = [
+export const statCards = [
     {
         id: 1,
         title: 'Devis',
