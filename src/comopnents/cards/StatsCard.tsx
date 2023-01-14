@@ -2,9 +2,9 @@ import React from "react";
 
 interface StatsCardProps {
     cardData: {
-        title?: string,
-        data?: string,
-        percentage?: string
+        title: string,
+        data: string,
+        percentage: string
     };
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import {
     FaDollarSign, FaHome, FaStripeS, FaUserPlus, FaUserNinja,
-    HiDocumentAdd, HiDocumentSearch, HiDocumentReport,
+    HiDocumentAdd, HiDocumentSearch, HiDocumentReport, MdOutlineLogout,
 } from "react-icons/all";
 
 interface Nav {
@@ -47,8 +47,8 @@ export const navLinks: Nav[] = [
         text: 'Gestion Stripes'
     },
     {
-        id: 'switch-role',
-        icon: FaUserNinja,
-        text: 'Changer de rôle ?'
+        id: 'logout',
+        icon: MdOutlineLogout,
+        text: 'Déconnexion'
     },
 ];
