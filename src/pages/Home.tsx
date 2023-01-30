@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Header} from "../comopnents";
 import {StatCard} from "../comopnents/cards/cards";
+import {ListClient} from "../comopnents/index";
 
 const Home = () => {
     return (
@@ -11,6 +12,9 @@ const Home = () => {
                 <StatCard/>
                 <StatCard/>
                 <StatCard/>
+            </section>
+            <section className="section-3">
+                <ListClient/>
             </section>
         </div>
     );
