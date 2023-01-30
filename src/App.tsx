@@ -1,8 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-// @ts-ignore
-import {Home} from "./pages/index";
+import {Home, Client} from "./pages/index";
 import {Header, Navigation} from "./comopnents/index"
 
 
@@ -16,6 +15,7 @@ const App = () => {
                     <Header/>
                     <Routes>
                         <Route index element={<Home/>}/>
+                        <Route path="add-client" element={<Client/>}/>
                     </Routes>
                 </div>
             </div>
