@@ -1,4 +1,5 @@
 import React from 'react';
+import {ListClient} from "../comopnents/index";
 import {StatsCard} from '../comopnents/index';
 import {statCards} from "../services/constants/statistics";
 import {Chart} from "../comopnents";
@@ -16,6 +17,9 @@ import {
 const Home = () => {
     return (
         <div className="page page-home">
+            <section className="section-3">
+                <ListClient/>
+            </section>
             <div>
                 <h5>Stats</h5>
                 <section className="section">
@@ -37,7 +41,6 @@ const Home = () => {
                     <Chart type="bar" data={barChartData} options={barChartOptions}/>
                 </section>
             </div>
-
         </div>
     );
 };
