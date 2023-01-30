@@ -1,7 +1,12 @@
 import React from 'react';
 import {Link, NavLink} from "react-router-dom";
+import {navLinks} from "../services/constants/navigation";
 
 const Navigation = () => {
+
+    // @ts-ignore
+    const active = ({isActive}) => ({fontWeight: isActive ? '700' : '400'});
+
     return (
         <nav className="navigation">
             <div>
@@ -9,29 +14,15 @@ const Navigation = () => {
             </div>
 
             <div className="nav-items">
-                <ul className="logged">
-                    <li>
-                        <Link to="/" className="nav-item">
-                            <i>logo </i>
-                            Home
-                        </Link>
-                    </li>
-
-                    <li>
-                        <NavLink to="about" className="nav-item">
-                            <i>logo </i>
-                            About
-                        </NavLink>
-                    </li>
-                </ul>
-
-                <ul className="unlogged">
-                    <li>
-                        <NavLink to="about" className="nav-item">
-                            <i>logo </i>
-                            Logout
-                        </NavLink>
-                    </li>
+                <ul>
+                    {navLinks.map((nav) => (
+                        <li key={nav.id}>
+                            <NavLink to={nav.id} className="nav-item" style={active}>
+                                <nav.icon />
+                                {nav.text}
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </nav>
