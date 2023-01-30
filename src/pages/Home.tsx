@@ -1,7 +1,7 @@
 import React from 'react';
 import {StatsCard} from '../comopnents/index';
 import {statCards} from "../services/constants/statistics";
-import {Chart} from "../comopnents";
+import {Chart, Input} from "../comopnents";
 import {
     lineChartData,
     lineChartOptions,
@@ -36,6 +36,10 @@ const Home = () => {
                     <Chart type="line" data={lineChartData} options={lineChartOptions}/>
                     <Chart type="bar" data={barChartData} options={barChartOptions}/>
                 </section>
+            </div>
+
+            <div>
+                <Input field="prénom" />
             </div>
 
         </div>
