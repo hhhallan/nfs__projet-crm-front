@@ -19,8 +19,8 @@ const Navigation = () => {
                 <ul>
                     {navLinks.map((nav) => (
                         <li key={nav.id}>
-                            <NavLink to={nav.id} className="nav-item" style={({ isActive }) => isActive ? activeStyle : undefined}>
-                                <nav.icon />
+                            <NavLink to={nav.id} className={({ isActive }) => isActive ? 'nav-item activate' : 'nav-item'} >
+                                <nav.icon className="icon" />
                                 {nav.text}
                             </NavLink>
                         </li>
