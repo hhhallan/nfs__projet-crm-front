@@ -14,6 +14,6 @@ export {
     TableClient,
     StatsCard,
     Chart,
-    Input
+    Input,
     TableHistoric
 }

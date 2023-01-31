@@ -14,10 +14,14 @@ const App = () => {
                 <div className="pages">
                     <Header/>
                     <Routes>
+
+                        {/* si user pas connecté*/}
+                        <Route path="connexion" element={<Auth/>}/>
+
+                        {/* si user connecté*/}
                         <Route index element={<Home/>}/>
                         <Route path="add-client" element={<Client/>}/>
                         <Route path="historique" element={<Historic/>}/>
-                        <Route path="connexion" element={<Auth/>}/>
                     </Routes>
                 </div>
             </div>

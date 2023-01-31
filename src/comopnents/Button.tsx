@@ -4,12 +4,13 @@ interface BtnProps {
     small?: boolean,
     outline?: boolean,
     text?: string,
-    link ?: boolean
+    link?: boolean,
+    type?: string
 }
 
-const Button = ({link, small, outline, text = "Button"}:BtnProps) => {
+const Button = ({link, type = "button", small, outline, text = "Button"}:BtnProps) => {
     return (
-        <button type="button" className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
+        <button type={type} className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
             {text}
         </button>
     );
