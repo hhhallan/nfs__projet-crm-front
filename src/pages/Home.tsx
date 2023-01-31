@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatsCard, Chart, Historique} from '../comopnents/index';
+import {StatsCard, Chart, TableHistoric} from '../comopnents/index';
 import {statCards} from "../services/constants/statistics";
 import {
     lineChartData,
@@ -15,9 +15,6 @@ import {
 const Home = () => {
     return (
         <div className="page page-home">
-
-            <Historique />
-
             <div>
                 <h5>Stats</h5>
                 <section className="section">

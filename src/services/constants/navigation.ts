@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    FaDollarSign, FaHome, FaStripeS, FaUserPlus, FaUserNinja,
+    FaDollarSign, FaHome, FaStripeS, FaUserPlus, FaHistory,
     HiDocumentAdd, HiDocumentSearch, HiDocumentReport, MdOutlineLogout,
 } from "react-icons/all";
 
@@ -47,8 +47,14 @@ export const navLinks: Nav[] = [
         text: 'Gestion Stripes'
     },
     {
+        id: 'historique',
+        icon: FaHistory,
+        text: 'Historique'
+    },
+    {
         id: 'logout',
         icon: MdOutlineLogout,
         text: 'Déconnexion'
     },
 ];
+

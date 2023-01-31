@@ -3,12 +3,13 @@ import React from 'react';
 interface BtnProps {
     small?: boolean,
     outline?: boolean,
-    text?: string
+    text?: string,
+    link ?: boolean
 }
 
-const Button = ({small, outline, text = "Button"}:BtnProps) => {
+const Button = ({link, small, outline, text = "Button"}:BtnProps) => {
     return (
-        <button type="button" className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''}`}>
+        <button type="button" className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
             {text}
         </button>
     );
