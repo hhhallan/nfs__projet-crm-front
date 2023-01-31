@@ -10,7 +10,7 @@ import {Button} from "./index";
 
 // Commercial peut voir - créer - modifier un prospect puis un client
 
-const TableClient = () => {
+const TableClient: React.FC = () => {
     const [clients, setList] = useState([
         {first_name: "Jean", last_name: "Claire", role: "client", email: "jean.claire@gmail.com"},
         {first_name: "Philipe", last_name: "Legrand", role: "prospect", email: "philipe.legrand@gmail.com"},

@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, NavLink} from "react-router-dom";
 import {navLinks} from "../services/constants/navigation";
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
 
     let activeStyle = {
         fontWeight: '700',

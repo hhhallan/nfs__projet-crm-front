@@ -33,7 +33,7 @@ interface Props {
     options: ChartOptions;
 }
 
-const Chart: FC<Props> = ({type, data, options}) => {
+const Chart: React.FC<Props> = ({type, data, options}) => {
     switch (type) {
         case 'line':
             return <div className="chart"><Line data={data} options={options}/></div>;
