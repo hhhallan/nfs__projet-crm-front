@@ -2,12 +2,13 @@ import React from 'react';
 import {useLocation} from "react-router-dom";
 
 const pathNameMapping : { [key: string]: string } = {
-    '/': 'Dashboard',
-    '/historique': 'Historique',
-    '/contact': 'Contact'
+    '/': 'Tableau de bord',
+    '/clients': 'Clients',
+    '/quotes-invoices': 'Devis & Factures',
+    '/historic': 'Historique',
 };
 
-const Header = () => {
+const Header: React.FC = () => {
     const location = useLocation();
     const pageName = pathNameMapping[location.pathname] || 'Not found';
 

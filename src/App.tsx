@@ -1,11 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-import {Home, Client, Historic} from "./pages/index";
+import {Home, Client, Historic, DevisFactures} from "./pages/index";
 import {Header, Navigation} from "./comopnents/index"
 
 
-const App = () => {
+const App: React.FC = () => {
     return (
         <BrowserRouter>
             <div id="App">
@@ -15,8 +15,9 @@ const App = () => {
                     <Header/>
                     <Routes>
                         <Route index element={<Home/>}/>
-                        <Route path="add-client" element={<Client/>}/>
-                        <Route path="historique" element={<Historic/>}/>
+                        <Route path="clients" element={<Client/>}/>
+                        <Route path="historic" element={<Historic/>}/>
+                        <Route path="quotes-invoices" element={<DevisFactures/>}/>
                     </Routes>
                 </div>
             </div>

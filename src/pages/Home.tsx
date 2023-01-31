@@ -12,7 +12,7 @@ import {
     testLineData
 } from "../services/constants/charts";
 
-const Home = () => {
+const Home: React.FC = () => {
     return (
         <div className="page page-home">
             <div>

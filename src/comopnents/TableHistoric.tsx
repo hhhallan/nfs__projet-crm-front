@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TableHistoric = () => {
+const TableHistoric: React.FC = () => {
     return (
         <table className="table">
             <thead>
