@@ -1,6 +1,7 @@
 import React from 'react';
 import {StatsCard, Chart, TableHistoric} from '../comopnents/index';
 import {statCards} from "../services/constants/statistics";
+import {Chart} from "../comopnents";
 import {
     lineChartData,
     lineChartOptions,
