@@ -4,6 +4,7 @@ import Header from "./Header";
 import ListClient from "./ListClient";
 import StatsCard from "./cards/StatsCard";
 import Chart from "./Chart";
+import Historique from "./Historique";
 
 export {
     Navigation,
@@ -11,5 +12,6 @@ export {
     Header,
     ListClient,
     StatsCard,
-    Chart
+    Chart,
+    Historique
 }

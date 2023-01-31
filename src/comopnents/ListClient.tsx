@@ -54,14 +54,14 @@ const ListClient = () => {
                                     <td>{client.role}</td>
                                     <td>{client.email}</td>
                                     <td>
-                                        <button onClick={() => updateRow(key)}>Update</button>
+                                        <button onClick={() => updateRow(key)}>Modifier</button>
                                     </td>
                                 </tr>
                             ))}
                     </tbody>
                 </table>
             </div>
-            <button onClick={addRow}>Add</button>
+            <button onClick={addRow}>Ajouter</button>
         </div>
 
     );
