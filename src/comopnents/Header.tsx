@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 
 const pathNameMapping : { [key: string]: string } = {
     '/': 'Dashboard',
-    '/about': 'About',
+    '/historique': 'Historique',
     '/contact': 'Contact'
 };
 

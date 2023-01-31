@@ -1,15 +1,17 @@
 import Navigation from "./Navigation";
 import Button from "./Button";
 import Header from "./Header";
-import ListClient from "./ListClient";
+import TableClient from "./TableClient";
 import StatsCard from "./cards/StatsCard";
 import Chart from "./Chart";
+import TableHistoric from "./TableHistoric";
 
 export {
     Navigation,
     Button,
     Header,
-    ListClient,
+    TableClient,
     StatsCard,
-    Chart
+    Chart,
+    TableHistoric
 }

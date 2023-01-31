@@ -1,5 +1,5 @@
 import React from 'react';
-import {ListClient} from "../comopnents";
+import {TableClient} from "../comopnents";
 
 const Client = () => {
     return (
@@ -7,7 +7,7 @@ const Client = () => {
             <div>
                 <h5>Clients</h5>
                 <section className="section">
-                    <ListClient/>
+                    <TableClient/>
                 </section>
             </div>
         </div>
