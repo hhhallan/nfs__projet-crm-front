@@ -40,5 +40,15 @@ button {
   &.btn--small {
     padding: 8px 12px;
   }
+
+  &.btn--link {
+    all: unset;
+    cursor: pointer;
+    color: var(--clr-primary-purple);
+
+    &:hover {
+      opacity: 80%;
+    }
+  }
 }
 
