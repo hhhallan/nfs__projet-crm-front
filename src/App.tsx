@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
 import AuthProvider from './auth/AuthProvider';
 
-import {Home, Client, Historic, DevisFactures, Auth, Paiement} from "./pages/index";
+import {HomePage, Client, Historic, DevisFactures, Auth, Paiement} from "./pages/index";
 import {Header, Navigation} from "./comopnents/index"
 import ServiceProvider from './services/context/ServiceProvider';
 import { AuthUser } from './auth/AuthContext';
@@ -28,7 +28,7 @@ const App: React.FC = () => {
                             <Routes>
                                 
                                 {/* si user connecté*/}
-                                <Route index element={getElement(<Home />)} />
+                                <Route index element={getElement(<HomePage />)} />
                                 <Route path="clients" element={getElement(<Client />)} />
                                 <Route path="history" element={getElement(<Historic />)} />
                                 <Route path="quotes-invoices" element={getElement(<DevisFactures />)} />
