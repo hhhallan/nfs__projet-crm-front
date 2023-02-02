@@ -6,6 +6,7 @@ import {Home, Client, Historic, DevisFactures, Auth, Paiement} from "./pages/ind
 import {Header, Navigation} from "./comopnents/index"
 import ServiceProvider from './services/context/ServiceProvider';
 import { AuthUser } from './auth/AuthContext';
+import Error404 from './pages/errors/Error404';
 
 
 
@@ -25,8 +26,6 @@ const App: React.FC = () => {
                         <div className="pages">
                             <Header/>
                             <Routes>
-                                {/* si user pas connecté*/}
-                                <Route path="login" element={<Auth />} />
                                 
                                 {/* si user connecté*/}
                                 <Route index element={getElement(<Home />)} />
@@ -35,6 +34,9 @@ const App: React.FC = () => {
                                 <Route path="quotes-invoices" element={getElement(<DevisFactures />)} />
                                 <Route path="payment" element={getElement(<Paiement />)} />
                                 
+                                {/* si user pas connecté*/}
+                                <Route path="login" element={<Auth />} />
+                                <Route path='*' element={<Error404/>}/>
                             </Routes>
                         </div>
                     </div>
