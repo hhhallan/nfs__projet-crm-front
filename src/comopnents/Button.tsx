@@ -4,12 +4,12 @@ interface BtnProps {
     small?: boolean,
     outline?: boolean,
     text?: string,
-    link ?: boolean
+    link?: boolean
 }
 
 const Button: React.FC<BtnProps> = ({link, small, outline, text = "Button"}) => {
     return (
-        <button type="button" className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
+        <button className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
             {text}
         </button>
     );

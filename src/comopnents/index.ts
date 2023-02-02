@@ -5,6 +5,7 @@ import StatsCard from "./cards/StatsCard";
 import Chart from "./Chart";
 import Modal from "./Modal";
 import Table from "./Table";
+import Input from "./Input";
 
 export {
     Navigation,
@@ -13,5 +14,6 @@ export {
     StatsCard,
     Chart,
     Modal,
-    Table
+    Table,
+    Input,
 }
