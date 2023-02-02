@@ -1,13 +1,19 @@
-.section {
-  --min: 10ch;
-  --gap: 1rem;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
+section {
   margin: 25px 0;
 
-  &> * {
-    flex: 1 1 var(--min);
+  &.section {
+    --min: 10ch;
+    --gap: 1rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    margin: 25px 0;
+
+    &> * {
+      flex: 1 1 var(--min);
+    }
   }
 }
+
+

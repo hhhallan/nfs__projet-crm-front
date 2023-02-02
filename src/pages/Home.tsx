@@ -1,7 +1,6 @@
 import React from 'react';
-import {StatsCard} from '../comopnents/index';
+import {StatsCard, Chart} from '../comopnents/index';
 import {statCards} from "../services/constants/statistics";
-import {Chart} from "../comopnents";
 import {
     lineChartData,
     lineChartOptions,
@@ -13,7 +12,7 @@ import {
     testLineData
 } from "../services/constants/charts";
 
-const Home = () => {
+const Home: React.FC = () => {
     return (
         <div className="page page-home">
             <div>
@@ -37,7 +36,6 @@ const Home = () => {
                     <Chart type="bar" data={barChartData} options={barChartOptions}/>
                 </section>
             </div>
-
         </div>
     );
 };

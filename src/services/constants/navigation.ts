@@ -1,7 +1,7 @@
 import React from "react";
 import {
-    FaDollarSign, FaHome, FaStripeS, FaUserPlus, FaUserNinja,
-    HiDocumentAdd, HiDocumentSearch, HiDocumentReport, MdOutlineLogout,
+    FaDollarSign, FaHome, FaStripeS, FaUserPlus, FaHistory,
+    HiDocumentAdd, HiDocumentSearch, HiDocumentReport, MdOutlineLogout, FaUserAlt,
 } from "react-icons/all";
 
 interface Nav {
@@ -14,12 +14,22 @@ export const navLinks: Nav[] = [
     {
         id: '/',
         icon: FaHome,
-        text: 'Dashboard'
+        text: 'Tableau de bord'
     },
     {
-        id: 'devis-factures',
+        id: 'clients',
+        icon: FaUserAlt,
+        text: 'Clients'
+    },
+    {
+        id: 'quotes-invoices',
         icon: HiDocumentReport,
         text: 'Devis / Factures'
+    },
+    {
+        id: 'historic',
+        icon: FaHistory,
+        text: 'Historique'
     },
     {
         id: 'paiment',
@@ -27,28 +37,15 @@ export const navLinks: Nav[] = [
         text: 'Paiement'
     },
     {
-        id: 'add-client',
-        icon: FaUserPlus,
-        text: 'Ajout client'
-    },
-    {
-        id: 'add-devis',
-        icon: HiDocumentAdd,
-        text: 'Création de devis'
-    },
-    {
-        id: 'voir-devis-facturesme',
-        icon: HiDocumentSearch,
-        text: 'Voir devis/factures'
-    },
-    {
         id: 'gestion-stripe',
         icon: FaStripeS,
         text: 'Gestion Stripes'
     },
+
     {
         id: 'logout',
         icon: MdOutlineLogout,
         text: 'Déconnexion'
     },
 ];
+

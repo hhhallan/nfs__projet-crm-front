@@ -2,12 +2,12 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import AuthProvider from './auth/AuthProvider';
 
-// @ts-ignore
-import {Home} from "./pages/index";
-import { Header, Navigation } from "./comopnents/index"
+import {Home, Client, Historic, DevisFactures} from "./pages/index";
+import {Header, Navigation} from "./comopnents/index"
 
 
-const App = () => {
+
+const App: React.FC = () => {
     return (
         <BrowserRouter>
             <AuthProvider>
@@ -18,6 +18,9 @@ const App = () => {
                         <Header/>
                         <Routes>
                             <Route index element={<Home/>}/>
+                            <Route path="clients" element={<Client/>}/>
+                            <Route path="historic" element={<Historic/>}/>
+                            <Route path="quotes-invoices" element={<DevisFactures/>}/>
                         </Routes>
                     </div>
                 </div>

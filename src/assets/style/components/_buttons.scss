@@ -24,7 +24,7 @@ button {
   }
 
   &:active {
-    padding: 8px 20px;
+    //padding: 8px 20px;
   }
 
   &.btn--outline {
@@ -39,6 +39,16 @@ button {
 
   &.btn--small {
     padding: 8px 12px;
+  }
+
+  &.btn--link {
+    all: unset;
+    cursor: pointer;
+    color: var(--clr-primary-purple);
+
+    &:hover {
+      opacity: 80%;
+    }
   }
 }
 
