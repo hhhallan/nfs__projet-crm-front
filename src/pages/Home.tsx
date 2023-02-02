@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatsCard, Chart, TableHistoric} from '../comopnents/index';
+import {StatsCard, Chart, TableHistoric, FormDevis, FormClients} from '../comopnents/index';
 import {statCards} from "../services/constants/statistics";
 import {
     lineChartData,
@@ -23,7 +23,12 @@ const Home = () => {
                     ))}
                 </section>
             </div>
-
+            <div>
+                <FormDevis />
+            </div>
+            <div>
+                <FormClients />
+            </div>
             <div>
                 <h5>Graphics</h5>
                 <section className="section">

@@ -6,6 +6,8 @@ import StatsCard from "./cards/StatsCard";
 import Chart from "./Chart";
 import Input from "./Input";
 import TableHistoric from "./TableHistoric";
+import FormDevis from "./FormDevis";
+import FormClients from "./FormClient";
 
 export {
     Navigation,
@@ -15,5 +17,7 @@ export {
     StatsCard,
     Chart,
     Input,
-    TableHistoric
+    TableHistoric,
+    FormDevis,
+    FormClients,
 }
