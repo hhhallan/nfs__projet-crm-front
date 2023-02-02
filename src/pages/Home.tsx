@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {StatsCard, Chart} from '../comopnents/index';
 import {statCards} from "../services/constants/statistics";
+import { AuthContext } from '../auth/AuthContext';
 import {
     lineChartData,
     lineChartOptions,
@@ -13,10 +14,12 @@ import {
 } from "../services/constants/charts";
 
 const Home: React.FC = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <div className="page page-home">
             <div>
-                <h5>Stats</h5>
+                <h5>Stats {user?.username} </h5>
                 <section className="section">
                     {statCards.map((card, index) => (
                         <StatsCard key={index} cardData={card}/>

@@ -1,8 +1,12 @@
-import React from 'react';
-import {Link, NavLink} from "react-router-dom";
+import React, { useContext } from 'react';
+import { MdOutlineLogout, MdOutlineLogin } from 'react-icons/all';
+import {Link, NavLink, useNavigate} from "react-router-dom";
+import { AuthContext } from '../auth/AuthContext';
 import {navLinks} from "../services/constants/navigation";
 
 const Navigation: React.FC = () => {
+    const navigate = useNavigate();
+    const { user, updateToken } = useContext(AuthContext);
 
     let activeStyle = {
         fontWeight: '700',
@@ -25,6 +29,22 @@ const Navigation: React.FC = () => {
                             </NavLink>
                         </li>
                     ))}
+
+                    {user ? (
+                        <li key={'logout'}>
+                            <a onClick={() => { updateToken(null); navigate('/login'); }} className={'nav-item'} >
+                                <MdOutlineLogout className="icon" />
+                                Déconnexion
+                            </a>
+                        </li>
+                    ): (
+                        <li key={'login'}>
+                            <NavLink to={'login'} className={({ isActive }) => isActive ? 'nav-item activate' : 'nav-item'} >
+                                <MdOutlineLogin className="icon" />
+                                Connexion
+                            </NavLink>
+                        </li>
+                    )}
                 </ul>
             </div>
         </nav>

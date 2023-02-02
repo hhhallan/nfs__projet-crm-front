@@ -1,6 +1,6 @@
-import {IProductService} from "./cores/IProductService";
-import Product from "../models/Product";
-import {Get, Put, Delete, Post} from './constants/AxiosService.js';
+import {IProductService} from "../cores/IProductService";
+import Product from "../../models/Product";
+import {Get, Put, Delete, Post} from '../constants/AxiosService.js';
 
 
 export default class ApiProductService implements IProductService {

@@ -1,13 +1,23 @@
 import React, { createContext } from "react";
 
+export class AuthUser {
+   username!: string
+   roles!: string[]
+
+   constructor(username: string, roles : string[]) {
+      this.roles = roles;
+      this.username = username;
+   }
+}
+
 export interface AuthContextType {
-   token: string | null
-   setToken: (token: string|null) => void
-   isAllowed: (token: string|null, roles: string[]) => boolean
+   user: AuthUser|null
+   updateToken: (token: string | null) => void
+   isAllowed: (user: AuthUser|null, roles: string[]) => boolean
 }
 
 export const AuthContext: React.Context<AuthContextType> = createContext<AuthContextType>({
-   token: null,
-   setToken: () => {},
+   user: null,
+   updateToken: () => { },
    isAllowed: () => false
 });
