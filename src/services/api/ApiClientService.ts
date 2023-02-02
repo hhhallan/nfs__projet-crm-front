@@ -26,6 +26,7 @@ export default class ApiClientService implements IClientService {
          }).catch((err: AxiosError) => reject(err))
       });
    }
+
    getByCommercial(id: string): Promise<Client[]> {
       this.checkToken();
       return new Promise((resolve, reject) => {
@@ -34,6 +35,7 @@ export default class ApiClientService implements IClientService {
          }).catch((err: AxiosError) => reject(err))
       });
    }
+
    create(prospect: Prospect): Promise<Client> {
       this.checkToken();
       return new Promise((resolve, reject) => {
@@ -42,6 +44,7 @@ export default class ApiClientService implements IClientService {
          }).catch((err: AxiosError) => reject(err))
       });
    }
+
    read(id: string): Promise<Client> {
       this.checkToken();
       return new Promise((resolve, reject) => {
@@ -50,10 +53,11 @@ export default class ApiClientService implements IClientService {
          }).catch((err: AxiosError) => reject(err))
       });
    }
+
    update(id: string, client: Client): Promise<Client> {
       this.checkToken();
       return new Promise((resolve, reject) => {
-         axios.post(`${API_URL}/client/${id}`, client, {headers}).then(data => {
+         axios.put(`${API_URL}/client/${id}`, client, {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });

@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
-import {IDevisService} from "../cores/IDevisService";
+import {IFactureService} from "../cores/IFactureService";
+import Facture from "../../models/Facture";
 import Devis from "../../models/Devis";
 
 const API_URL = 'http://51.254.103.139:8000/api';
@@ -7,7 +8,7 @@ const headers: any = {
     'Content-Type': 'application/json',
 }
 
-export default class ApiDevisService implements IDevisService {
+export default class ApiFactureService implements IFactureService {
    checkToken(): void {
       let token = sessionStorage.getItem("session");
       if (token) {
@@ -17,65 +18,54 @@ export default class ApiDevisService implements IDevisService {
       }
    }
    
-   getAll(): Promise<Devis[]> {
+   getAll(): Promise<Facture[]> {
       this.checkToken();
       return new Promise((resolve, reject) => {
-         axios.get(`${API_URL}/devis`, {headers}).then(data => {
+         axios.get(`${API_URL}/facture`, {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });
    }
 
-   getByClient(id: string): Promise<Devis[]> {
+   getByClient(id: string): Promise<Facture[]> {
       this.checkToken();
       return new Promise((resolve, reject) => {
-         axios.get(`${API_URL}/devis/client/${id}`, {headers}).then(data => {
+         axios.get(`${API_URL}/facture/client/${id}`, {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });
    }
 
-   getByCommercial(id: string): Promise<Devis[]> {
+   getByCommercial(id: string): Promise<Facture[]> {
       this.checkToken();
       return new Promise((resolve, reject) => {
-         axios.get(`${API_URL}/devis/commercial/${id}`, {headers}).then(data => {
+         axios.get(`${API_URL}/facture/commercial/${id}`, {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });
    }
 
-   create(devis: Devis): Promise<Devis> {
+   create(devis: Devis): Promise<Facture> {
       this.checkToken();
-      let body = {
-         client_id: devis.client.id,
-         commercial_id: devis.commercial.id,
-         contents: devis.content.map(c => {
-            return {
-               quantity: c.quantity,
-               product_id: c.product.id
-            }
-         })
-      }
-
       return new Promise((resolve, reject) => {
-         axios.post(`${API_URL}/devis`, body, {headers}).then(data => {
+         axios.post(`${API_URL}/facture/${devis.id}`, {}, {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });
    }
 
-   read(id: string): Promise<Devis> {
+   read(id: string): Promise<Facture> {
       this.checkToken();
       return new Promise((resolve, reject) => {
-         axios.get(`${API_URL}/devis/${id}`, {headers}).then(data => {
+         axios.get(`${API_URL}/facture/${id}`, {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });
    }
 
-   update(id: string, devis: Devis): Promise<Devis> {
+   update(id: string, facture: Facture): Promise<Facture> {
       this.checkToken();
-      let body = devis.content.map(c => {
+      let body = facture.content.map(c => {
          return {
             quantity: c.quantity,
             product_id: c.product.id
@@ -83,7 +73,16 @@ export default class ApiDevisService implements IDevisService {
       })
 
       return new Promise((resolve, reject) => {
-         axios.put(`${API_URL}/devis/${id}`, body, {headers}).then(data => {
+         axios.put(`${API_URL}/facture/${id}`, body, {headers}).then(data => {
+            resolve(data.data);
+         }).catch((err: AxiosError) => reject(err))
+      });
+   }
+
+   validate(id: string): Promise<Facture> {
+      this.checkToken();
+      return new Promise((resolve, reject) => {
+         axios.put(`${API_URL}/facture/${id}/validate`, {}, {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });

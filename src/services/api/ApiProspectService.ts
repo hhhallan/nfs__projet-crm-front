@@ -25,6 +25,7 @@ export default class ApiProspectService implements IProspectService {
          }).catch((err: AxiosError) => reject(err))
       });
    }
+   
    getByCommercial(id: string): Promise<Prospect[]> {
       this.checkToken();
       return new Promise((resolve, reject) => {
@@ -33,6 +34,7 @@ export default class ApiProspectService implements IProspectService {
          }).catch((err: AxiosError) => reject(err))
       });
    }
+
    create(prospect: Prospect): Promise<Prospect> {
       this.checkToken();
       return new Promise((resolve, reject) => {
@@ -41,6 +43,7 @@ export default class ApiProspectService implements IProspectService {
          }).catch((err: AxiosError) => reject(err))
       });
    }
+
    read(id: string): Promise<Prospect> {
       this.checkToken();
       return new Promise((resolve, reject) => {
@@ -49,10 +52,11 @@ export default class ApiProspectService implements IProspectService {
          }).catch((err: AxiosError) => reject(err))
       });
    }
+
    update(id: string, prospect: Prospect): Promise<Prospect> {
       this.checkToken();
       return new Promise((resolve, reject) => {
-         axios.post(`${API_URL}/prospect/${id}`, prospect, {headers}).then(data => {
+         axios.put(`${API_URL}/prospect/${id}`, prospect, {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });

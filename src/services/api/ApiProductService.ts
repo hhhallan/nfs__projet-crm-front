@@ -25,6 +25,7 @@ export default class ApiProductService implements IProductService {
             }).catch((err: AxiosError) => reject(err))
         });
     }
+
     getAllArchived(): Promise<Product[]> {
         this.checkToken();
         return new Promise((resolve, reject) => {
@@ -33,6 +34,7 @@ export default class ApiProductService implements IProductService {
             }).catch((err: AxiosError) => reject(err))
         });
     }
+
     create(product: Product): Promise<Product> {
         this.checkToken();
         return new Promise((resolve, reject) => {
@@ -41,6 +43,7 @@ export default class ApiProductService implements IProductService {
             }).catch((err: AxiosError) => reject(err))
         });
     }
+
     read(id: string): Promise<Product> {
         this.checkToken();
         return new Promise((resolve, reject) => {
@@ -49,14 +52,16 @@ export default class ApiProductService implements IProductService {
             }).catch((err: AxiosError) => reject(err))
         });
     }
+
     update(id: string, product: Product): Promise<Product> {
         this.checkToken();
         return new Promise((resolve, reject) => {
-            axios.post(`${API_URL}/product/${id}`, product, {headers}).then(data => {
+            axios.put(`${API_URL}/product/${id}`, product, {headers}).then(data => {
                resolve(data.data);
             }).catch((err: AxiosError) => reject(err))
         });
     }
+    
     archive(id: string): Promise<Product> {
         this.checkToken();
         return new Promise((resolve, reject) => {
