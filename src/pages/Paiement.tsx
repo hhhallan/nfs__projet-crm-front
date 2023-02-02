@@ -8,43 +8,9 @@ const Paiement: React.FC = () => {
     const expiryDatePattern = /^(0[1-9]|1[0-2])\/(\d{2})$/;
     const cvvPattern = /^[0-9]{3}$/;
 
-    const [cardNumber, setCardNumber] = useState('');
-    const [expiryDate, setExpiryDate] = useState('');
-    const [cvv, setCvv] = useState('');
-
-    const handleCardNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCardNumber(event.target.value);
-    };
-
-    const handleExpiryDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setExpiryDate(event.target.value);
-    };
-
-    const handleCvvChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCvv(event.target.value);
-    };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
-        if (!cardNumberPattern.test(cardNumber)) {
-            // Afficher une erreur pour le numéro de carte bancaire
-        }
-
-        if (!expiryDatePattern.test(expiryDate)) {
-            // Afficher une erreur pour la date d'expiration
-        }
-
-        if (!cvvPattern.test(cvv)) {
-            // Afficher une erreur pour le code CVV
-        }
-
-        // Continuer avec la validation et la soumission des données
-    };
-
     return (
         <div className="page page-payment">
-            <h5>Paiement</h5>
+            {/*<h5>Paiement</h5>
             <section className="section">
                 <form onSubmit={handleSubmit}>
                     <Input
@@ -70,7 +36,30 @@ const Paiement: React.FC = () => {
 
                     <Button text="Payer" type="submit" />
                 </form>
-            </section>
+            </section>*/}
+            <form className="form-container">
+                <div className="field">
+                    <label htmlFor="name">Name</label>
+                    <input id="name" maxLength={20} type="text"/>
+                </div>
+                <div className="field">
+                    <label htmlFor="cardnumber">Card Number</label>
+                    <input id="cardnumber" type="text" pattern="[0-9]*" inputMode="numeric"/>
+                </div>
+
+                <div className="field-container">
+                    <div className="field">
+                        <label htmlFor="expirationdate">Expiration (mm/yy)</label>
+                        <input id="expirationdate" type="text" pattern="[0-9]*" inputMode="numeric"/>
+                    </div>
+                    <div className="field">
+                        <label htmlFor="securitycode">Security Code</label>
+                        <input id="securitycode" type="text" pattern="[0-9]*" inputMode="numeric"/>
+                    </div>
+                </div>
+
+                <Button text="Payer" type="submit" />
+            </form>
         </div>
     );
 };
