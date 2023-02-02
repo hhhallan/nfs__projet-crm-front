@@ -32,7 +32,7 @@ export const navLinks: Nav[] = [
         text: 'Historique'
     },
     {
-        id: 'paiment',
+        id: 'payment',
         icon: FaDollarSign,
         text: 'Paiement'
     },
