@@ -41,11 +41,5 @@ export const navLinks: Nav[] = [
         icon: FaStripeS,
         text: 'Gestion Stripes'
     },
-
-    {
-        id: 'logout',
-        icon: MdOutlineLogout,
-        text: 'Déconnexion'
-    },
 ];
 

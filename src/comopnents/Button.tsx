@@ -6,6 +6,7 @@ interface BtnProps {
     text: string;
     link?: boolean;
     type: 'button' | 'submit' | 'reset';
+    onClick?: () => void;
 }
 
 const Button: React.FC<BtnProps> = ({
@@ -13,11 +14,12 @@ const Button: React.FC<BtnProps> = ({
         link,
         small,
         outline,
-        text
+        text,
+        onClick = () => {}
     }) => {
 
     return (
-        <button type={type} className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
+        <button onClick={onClick} type={type} className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
             {text}
         </button>
     );

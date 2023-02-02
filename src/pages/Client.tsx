@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Modal, Table} from "../comopnents";
-import {logs} from "../services/constants/historic";
+import { Button, Modal, Table } from "../comopnents";
 import {clients} from "../services/constants/clients";
 
 const Client: React.FC = () => {
@@ -46,7 +45,7 @@ const Client: React.FC = () => {
                                 <td>{client.firstName}</td>
                                 <td>{roleSwitch(client.role)}</td>
                                 <td>{client.email}</td>
-                                <td><Button text="Modifier" link/></td>
+                                <td><Button type='button' text="Modifier" link/></td>
                             </tr>
                         ))}
                     </Table>
