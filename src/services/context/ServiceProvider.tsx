@@ -4,6 +4,7 @@ import ApiAuthService from "../api/ApiAuthService";
 import ApiProductService from "../api/ApiProductService";
 import ApiClientService from "../api/ApiClientService";
 import ApiProspectService from "../api/ApiProspectService";
+import ApiDevisService from "../api/ApiDevisService";
 
 interface ServiceProviderProps {
    children : React.ReactNode
@@ -14,7 +15,8 @@ const ServiceProvider: React.FC<ServiceProviderProps> = ({ children }) => {
       authService: new ApiAuthService(),
       productService: new ApiProductService(),
       clientService: new ApiClientService(),
-      prospectService: new ApiProspectService()
+      prospectService: new ApiProspectService(),
+      devisService: new ApiDevisService()
    }
 
    return (

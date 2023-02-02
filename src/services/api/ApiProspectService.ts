@@ -36,7 +36,7 @@ export default class ApiProspectService implements IProspectService {
    create(prospect: Prospect): Promise<Prospect> {
       this.checkToken();
       return new Promise((resolve, reject) => {
-         axios.post(`${API_URL}/prospect/${prospect.id}`, {}, {headers}).then(data => {
+         axios.post(`${API_URL}/prospect`, prospect, {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });

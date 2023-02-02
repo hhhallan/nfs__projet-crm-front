@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
-import AuthProvider from './auth/AuthProvider';
+import AuthProvider, { createUser } from './auth/AuthProvider';
 
 import {HomePage, Client, Historic, DevisFactures, Auth, Paiement} from "./pages/index";
 import {Header, Navigation} from "./comopnents/index"
@@ -11,7 +11,7 @@ import Error404 from './pages/errors/Error404';
 
 
 const App: React.FC = () => {
-    const [user, setUser] = useState<AuthUser|null>(null);
+    const [user, setUser] = useState<AuthUser|null>(createUser(sessionStorage.getItem("session")));
     const getElement = (element: React.ReactNode): React.ReactNode => {
         return user ? element : <Navigate replace to="/login" />;
     }
