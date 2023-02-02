@@ -16,7 +16,8 @@
     transition: border-color 0.2s;
 
     &::placeholder {
-      color: transparent;
+      font-size: 1.2rem;
+      opacity: 0;
     }
 
     &:focus {
@@ -25,6 +26,10 @@
       border-width: 3px;
       border-image: linear-gradient(to right, var(--clr-btn-hover), var(--clr-btn-purple));
       border-image-slice: 1;
+
+      > &::placeholder {
+        opacity: 100%;
+      }
     }
   }
 

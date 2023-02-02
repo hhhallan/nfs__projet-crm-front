@@ -1,11 +1,19 @@
 import React from 'react';
 
 interface InputProps {
-    field: string,
-    type: string,
+    field: string;
+    type: 'text' | 'email' | 'password' | 'select';
+    placeholder?: string;
+    value: string
 }
 
-const Input = ({field = "name", type = "text"}:InputProps) => {
+const Input: React.FC<InputProps> = ({
+        placeholder,
+        field = "field",
+        type,
+        value
+    }) => {
+
     // Mets la 1e lettre en maj
     const label = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -16,7 +24,11 @@ const Input = ({field = "name", type = "text"}:InputProps) => {
 
     return (
         <div className="form__group">
-            <input required placeholder={label(field)} type={type}/>
+            <input required
+                   placeholder={placeholder ? placeholder : ""}
+                   type={type}
+                   value={value}
+            />
             <label htmlFor={input(field)}>{label(field)}</label>
         </div>
     );
