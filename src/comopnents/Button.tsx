@@ -7,7 +7,7 @@ interface BtnProps {
     link ?: boolean
 }
 
-const Button: React.FC = ({link, small, outline, text = "Button"}:BtnProps) => {
+const Button: React.FC<BtnProps> = ({link, small, outline, text = "Button"}) => {
     return (
         <button type="button" className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
             {text}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatsCard, Chart, TableHistoric} from '../comopnents/index';
+import {StatsCard, Chart} from '../comopnents/index';
 import {statCards} from "../services/constants/statistics";
 import {
     lineChartData,

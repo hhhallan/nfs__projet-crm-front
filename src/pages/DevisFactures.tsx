@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
-import {Modal} from "../comopnents";
+import {Modal, Table} from "../comopnents";
 
 const DevisFactures: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+
+    let headersDev = ["Commercial", "Client", "Quantité", "Référence"];
+    let headersFac = ["Commercial", "Client", "Quantité", "Référence", "State"];
 
     return (
         <div className="page page-devis-factures">
@@ -22,14 +25,18 @@ const DevisFactures: React.FC = () => {
             <div>
                 <h5>Devis</h5>
                 <section className="section">
-                    <p>devis</p>
+                    <Table headers={headersDev}>
+
+                    </Table>
                 </section>
             </div>
 
             <div>
                 <h5>Factures</h5>
                 <section className="section">
-                    <p>facture</p>
+                    <Table headers={headersFac}>
+
+                    </Table>
                 </section>
             </div>
         </div>
