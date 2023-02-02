@@ -7,39 +7,46 @@ import {
 interface Nav {
     id: string,
     icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
-    text: string
+    text: string,
+    permission: number
 }
 
 export const navLinks: Nav[] = [
     {
         id: '/',
         icon: FaHome,
-        text: 'Tableau de bord'
+        text: 'Tableau de bord',
+        permission: 0
     },
     {
         id: 'clients',
         icon: FaUserAlt,
-        text: 'Clients'
+        text: 'Clients',
+        permission: 1
     },
     {
         id: 'quotes-invoices',
         icon: HiDocumentReport,
-        text: 'Devis / Factures'
+        text: 'Devis / Factures',
+        permission: 0
     },
     {
         id: 'historic',
         icon: FaHistory,
-        text: 'Historique'
+        text: 'Historique des users',
+        permission: 2
     },
     {
         id: 'payment',
         icon: FaDollarSign,
-        text: 'Paiement'
+        text: 'Paiement',
+        permission: 0
     },
     {
         id: 'gestion-stripe',
         icon: FaStripeS,
-        text: 'Gestion Stripes'
+        text: 'Gestion Stripes',
+        permission: 2
     },
 ];
 
