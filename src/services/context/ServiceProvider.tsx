@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../auth/AuthContext";
+import React from "react";
 import { ServiceContext } from './ServiceContext';
 import ApiAuthService from "../api/ApiAuthService";
-import { IAuthService } from "../cores/IAuthService";
+import ApiProductService from "../api/ApiProductService";
+import ApiClientService from "../api/ApiClientService";
 
 
 interface ServiceProviderProps {
@@ -11,7 +11,9 @@ interface ServiceProviderProps {
 
 const ServiceProvider: React.FC<ServiceProviderProps> = ({ children }) => {
    const services = {
-      authService: new ApiAuthService()
+      authService: new ApiAuthService(),
+      productService: new ApiProductService(),
+      clientService: new ApiClientService()
    }
 
    return (
