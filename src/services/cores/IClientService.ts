@@ -1,5 +1,5 @@
-import { Client } from "../../models/User/Client";
-import { Prospect } from "../../models/User/Prospect";
+import Client from "../../models/User/Client";
+import Prospect from "../../models/User/Prospect";
 
 export interface IClientService {
     getAll() : Promise<Client[]>;

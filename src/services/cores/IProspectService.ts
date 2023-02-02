@@ -1,4 +1,4 @@
-import { Prospect } from "../../models/User/Prospect";
+import Prospect from "../../models/User/Prospect";
 
 export interface IProspectService {
     getAll() : Promise<Prospect[]>;

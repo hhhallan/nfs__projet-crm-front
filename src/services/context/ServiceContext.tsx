@@ -5,12 +5,14 @@ import ApiDevisService from "../api/ApiDevisService";
 import ApiFactureService from "../api/ApiFactureService";
 import ApiProductService from "../api/ApiProductService";
 import ApiProspectService from "../api/ApiProspectService";
+import ApiUserService from "../api/ApiUserService";
 import { IAuthService } from "../cores/IAuthService";
 import { IClientService } from "../cores/IClientService";
 import { IDevisService } from "../cores/IDevisService";
 import { IFactureService } from "../cores/IFactureService";
 import { IProductService } from "../cores/IProductService";
 import { IProspectService } from "../cores/IProspectService";
+import { IUserService } from "../cores/IUserService";
 
 export interface ServiceContextType {
    authService: IAuthService,
@@ -18,7 +20,8 @@ export interface ServiceContextType {
    clientService: IClientService,
    prospectService: IProspectService,
    devisService: IDevisService,
-   factureService: IFactureService
+   factureService: IFactureService,
+   userService: IUserService,
 }
 
 export const ServiceContext: React.Context<ServiceContextType> = createContext<ServiceContextType>({
@@ -27,5 +30,6 @@ export const ServiceContext: React.Context<ServiceContextType> = createContext<S
    clientService: new ApiClientService(),
    prospectService: new ApiProspectService(),
    devisService: new ApiDevisService(),
-   factureService: new ApiFactureService()
+   factureService: new ApiFactureService(),
+   userService: new ApiUserService()
 });

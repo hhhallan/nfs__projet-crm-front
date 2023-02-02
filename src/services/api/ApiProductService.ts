@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import {IProductService} from "../cores/IProductService";
 import Product from "../../models/Product";
 
-const API_URL = 'http://51.254.103.139:8000/api';
+const API_URL = 'https://51.254.103.139:8000/api';
 const headers: any = {
     'Content-Type': 'application/json',
 }
