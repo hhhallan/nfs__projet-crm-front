@@ -1,41 +1,25 @@
 import {IProductService} from "./cores/IProductService";
 import Product from "../models/Product";
-import axios, {AxiosInstance} from "axios";
+import {Get, Put, Delete, Post} from './constants/AxiosService.js';
 
-const API_URL = 'https://your-api-url.com';
 
 export default class ApiProductService implements IProductService {
-
-    private client : AxiosInstance;
-
-    constructor() {
-        this.client = axios.create({
-            baseURL: API_URL
-        });
+    getAll(): Promise<Product[]> {
+        return Get<Product[]>('/product');
     }
-
-    create(product: Product): Product {
-        return undefined;
+    getAllArchived(): Promise<Product[]> {
+        return Get<Product[]>('/product/archived');
     }
-
-    delete(id: string): Product {
-        return undefined;
+    create(product: Product): Promise<Product> {
+        return Post<Product>('/product', product);
     }
-
-    async getAll(): Promise<Product[]> {
-        return (await this.client.get<Product[]>("/api/product")).data;
+    read(id: string): Promise<Product> {
+        return Get<Product>('/product/' + id);
     }
-
-    getAllArchived(): Product[] {
-        return [];
+    update(id: string, product: Product): Promise<Product> {
+        return Put<Product>('/product/' + id, product);
     }
-
-    read(id: string): Product | undefined {
-        return undefined;
+    archive(id: string): Promise<Product> {
+        return Delete<Product>('/product/' + id);
     }
-
-    update(id: string, product: Product): Product {
-        return undefined;
-    }
-
 }
