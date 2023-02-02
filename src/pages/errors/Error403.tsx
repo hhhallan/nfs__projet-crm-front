@@ -2,9 +2,9 @@ import React from 'react';
 
 const Error404: React.FC = () => {
 	return (
-		<div>
+		<div className="page-403">
 			<h1>Error 403</h1>
-			<p>Sorry, you are not authorized to access this page.</p>
+			<p>Désolé, vous n'êtes pas autorisé à accéder à cette page.</p>
 		</div>
 	);
 };

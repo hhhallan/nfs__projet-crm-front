@@ -2,9 +2,10 @@ import React from 'react';
 
 const Error404: React.FC = () => {
 	return (
-		<div>
+		<div className='page-404'>
 			<h1>Error 404</h1>
-			<p>Sorry, the page you were looking for could not be found.</p>
+			<p>Désolé, la page que vous recherchez est introuvable.</p>
+			<a href='/'>Retour</a>
 		</div>
 	);
 };
