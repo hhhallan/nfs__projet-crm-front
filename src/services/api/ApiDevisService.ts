@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import {IDevisService} from "../cores/IDevisService";
 import Devis from "../../models/Devis";
 
-const API_URL = 'https://51.254.103.139:8000/api';
+const API_URL = 'http://51.254.103.139:8000/api';
 const headers: any = {
     'Content-Type': 'application/json',
 }
