@@ -4,7 +4,7 @@ import Client from "../../models/User/Client";
 import Commercial from "../../models/User/Commercial";
 import { IUserService } from "../cores/IUserService";
 
-const API_URL = 'https://51.254.103.139:8000/api';
+const API_URL = 'http://51.254.103.139:8000/api';
 const headers: any = {
     'Content-Type': 'application/json',
 }

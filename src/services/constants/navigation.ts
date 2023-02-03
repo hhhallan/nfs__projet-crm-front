@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    FaDollarSign, FaHome, FaStripeS, FaUserPlus, FaHistory,
+    FaDollarSign, FaHome, FaStripeS, FaUsers, FaHistory,
     HiDocumentAdd, HiDocumentSearch, HiDocumentReport, MdOutlineLogout, FaUserAlt,
 } from "react-icons/all";
 
@@ -31,12 +31,6 @@ export const navLinks: Nav[] = [
         permission: 0
     },
     {
-        id: 'historic',
-        icon: FaHistory,
-        text: 'Historique des users',
-        permission: 2
-    },
-    {
         id: 'payment',
         icon: FaDollarSign,
         text: 'Paiement',
@@ -48,5 +42,11 @@ export const navLinks: Nav[] = [
         text: 'Gestion Stripes',
         permission: 2
     },
+    {
+        id: 'admin',
+        icon: FaUsers,
+        text: 'Gestion des users',
+        permission: 2
+    }
 ];
 

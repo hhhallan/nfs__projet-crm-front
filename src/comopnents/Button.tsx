@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface BtnProps {
+    style?: React.CSSProperties
     small?: boolean;
     outline?: boolean;
     text: string;
@@ -10,6 +11,7 @@ interface BtnProps {
 }
 
 const Button: React.FC<BtnProps> = ({
+        style,
         type,
         link,
         small,
@@ -19,7 +21,7 @@ const Button: React.FC<BtnProps> = ({
     }) => {
 
     return (
-        <button onClick={onClick} type={type} className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
+        <button style={style} onClick={onClick} type={type} className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
             {text}
         </button>
     );
