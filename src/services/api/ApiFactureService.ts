@@ -3,7 +3,7 @@ import {IFactureService} from "../cores/IFactureService";
 import Facture from "../../models/Facture";
 import Devis from "../../models/Devis";
 
-const API_URL = 'https://51.254.103.139:8000/api';
+const API_URL = 'http://51.254.103.139:8000/api';
 const headers: any = {
     'Content-Type': 'application/json',
 }

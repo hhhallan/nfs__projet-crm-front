@@ -1,13 +1,19 @@
 import React, {useState} from 'react';
-import {Modal, Table} from "../comopnents";
+import {Modal, DevisCard, Table, FactureCard, Button} from "../comopnents";
+import {devisCards} from "../services/constants/devis";
+import {factureCards} from "../services/constants/factures";
 
 const DevisFactures: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [filter, setFilter] = useState(false);
+
+    const handleClick = () => {
+        setFilter(!filter);
+    }
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    let headersDev = ["Commercial", "Client", "Quantité", "Référence"];
     let headersFac = ["Commercial", "Client", "Quantité", "Référence", "State"];
 
     return (
@@ -22,23 +28,28 @@ const DevisFactures: React.FC = () => {
                 </section>
             </div>
 
-            <div>
-                <h5>Devis</h5>
-                <section className="section">
-                    <Table headers={headersDev}>
+            <Button onClick={handleClick} text="Changer de type" type="button" link/>
 
-                    </Table>
-                </section>
-            </div>
-
-            <div>
-                <h5>Factures</h5>
-                <section className="section">
-                    <Table headers={headersFac}>
-
-                    </Table>
-                </section>
-            </div>
+            {
+                filter ?
+                    <>
+                        <h5>Devis</h5>
+                        <section className="section">
+                            {devisCards.map((card, index) => (
+                                <DevisCard key={index} cardData={card}/>
+                            ))}
+                        </section>
+                    </>
+                    :
+                    <>
+                        <h5>Factures</h5>
+                        <section className="section">
+                            {factureCards.map((card, index) => (
+                                <FactureCard key={index} cardData={card}/>
+                            ))}
+                        </section>
+                    </>
+            }
         </div>
     );
 };

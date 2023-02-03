@@ -7,7 +7,8 @@ const pathNameMapping : { [key: string]: string } = {
     '/quotes-invoices': 'Devis & Factures',
     '/historic': 'Historique',
     '/payment': 'Paiement',
-    '/connexion': 'Connexion',
+    '/login': 'Connexion',
+    '/products': 'Produits',
 };
 
 const Header: React.FC = () => {
