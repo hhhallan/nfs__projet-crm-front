@@ -22,7 +22,31 @@ export default class ApiAuthService implements IAuthService {
       return new Promise((resolve, reject) => {
          axios.post(`${API_URL}/login_check`, {username: email, password}, {headers}).then(data => {
             resolve(data.data.token);
-         }).catch((err: AxiosError) => reject(err.message))
+         }).catch((err: AxiosError) => {
+            reject(err);
+         })
+     })
+   }
+
+   resetPwd(email: string): Promise<any> {
+      this.checkToken();
+      return new Promise((resolve, reject) => {
+         axios.put(`${API_URL}/reset`, { email }, {headers}).then(data => {
+            resolve(data.data);
+         }).catch((err: AxiosError) => {
+            reject(err);
+         })
+     })
+   }
+
+   changePwd(resetToken: string, password: string): Promise<any> {
+      this.checkToken();
+      return new Promise((resolve, reject) => {
+         axios.put(`${API_URL}/changePwd/${resetToken}`, { password }, {headers}).then(data => {
+            resolve(data.data);
+         }).catch((err: AxiosError) => {
+            reject(err);
+         })
      })
    }
 }

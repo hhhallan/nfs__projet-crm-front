@@ -6,6 +6,9 @@ import Chart from "./Chart";
 import Modal from "./Modal";
 import Table from "./Table";
 import Input from "./Input";
+import DevisCard from "./cards/DevisCard";
+import ProductCard from "./cards/ProductCard";
+import FactureCard from "./cards/FactureCard";
 
 export {
     Navigation,
@@ -16,4 +19,7 @@ export {
     Modal,
     Table,
     Input,
+    DevisCard,
+    ProductCard,
+    FactureCard
 }
