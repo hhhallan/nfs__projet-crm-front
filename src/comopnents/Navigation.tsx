@@ -16,12 +16,12 @@ const Navigation: React.FC = () => {
     return (
         <nav className="navigation">
             <div>
-                Logo
+                CRM
             </div>
 
             <div className="nav-items">
                 <ul>
-                    {navLinks.filter(navLinks => navLinks.permission <= (user ? user.role_power : -1 )).map((nav) => (
+                    {navLinks.filter(navLinks => navLinks.permission.filter(p => p == (user ? user.role_power : -1 ) ).length).map((nav) => (
                         <li key={nav.id}>
                             <NavLink to={nav.id} className={({ isActive }) => isActive ? 'nav-item activate' : 'nav-item'} >
                                 <nav.icon className="icon" />

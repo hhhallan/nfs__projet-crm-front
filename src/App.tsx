@@ -1,17 +1,15 @@
 import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
-import AuthProvider from './auth/AuthProvider';
-
-import {HomePage, Client, Historic, DevisFactures, Auth, Paiement} from "./pages/index";
-import {Header, Navigation} from "./comopnents/index"
+import AuthProvider, { createUser } from './auth/AuthProvider';
 import ServiceProvider from './services/context/ServiceProvider';
 import { AuthUser } from './auth/AuthContext';
-import Error404 from './pages/errors/Error404';
+import { FormDevis, FormFacture, Header, Navigation } from './comopnents';
+import { Client, HomePage, AdminDetailPage, AdminPage, Historic, DevisFacturesPage, Paiement, Product, Auth, PasswordForgot, PasswordReset, Error404 } from './pages';
 
 
 
 const App: React.FC = () => {
-    const [user, setUser] = useState<AuthUser|null>(null);
+    const [user, setUser] = useState<AuthUser|null>(createUser(sessionStorage.getItem("session")));
     const getElement = (element: React.ReactNode): React.ReactNode => {
         return user ? element : <Navigate replace to="/login" />;
     }
@@ -31,11 +29,19 @@ const App: React.FC = () => {
                                 <Route index element={getElement(<HomePage />)} />
                                 <Route path="clients" element={getElement(<Client />)} />
                                 <Route path="history" element={getElement(<Historic />)} />
-                                <Route path="quotes-invoices" element={getElement(<DevisFactures />)} />
+                                <Route path="quotes-invoices" element={getElement(<DevisFacturesPage />)} />
+                                <Route path="devis/new" element={getElement(<FormDevis />)} />
+                                <Route path="devis/:id/edit" element={getElement(<FormDevis />)} />
+                                <Route path="facture/:id/edit" element={getElement(<FormFacture />)} />
                                 <Route path="payment" element={getElement(<Paiement />)} />
+                                <Route path="admin" element={getElement(<AdminPage />)} />
+                                <Route path="admin/:id" element={getElement(<AdminDetailPage />)} />
+                                <Route path="products" element={getElement(<Product />)} />
                                 
                                 {/* si user pas connecté*/}
                                 <Route path="login" element={<Auth />} />
+                                <Route path="forgot-password" element={<PasswordForgot />} />
+                                <Route path="reset-password" element={<PasswordReset />} />
                                 <Route path='*' element={<Error404/>}/>
                             </Routes>
                         </div>

@@ -22,12 +22,12 @@ const Auth: React.FC = () => {
     return (
         <div className="page page-auth">
             <div>
-                <h5>Connexion {authContext.user?.username}</h5>
+                <h5>Connexion</h5>
 
                 <section className="section">
                     <form onSubmit={handleSubmit}>
-                        <Input field="E-mail" type="email" value={email} setValue={setEmail} />
-                        <Input field="Mot de passe" type="password" value={password} setValue={setPassword} />
+                        <Input label="E-mail" name="email" type="email" value={email} setValue={setEmail} />
+                        <Input label="Mot de passe" name="password" type="password" value={password} setValue={setPassword} />
 
                         <Button type="submit" text="Se connecter"/>
                     </form>

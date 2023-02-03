@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext, useEffect } from 'react';
 import UserHome from './UserHome';
 import AdminHome from './AdminHome';
 import CommercialHome from './CommercialHome';

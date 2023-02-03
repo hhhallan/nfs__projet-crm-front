@@ -23,4 +23,4 @@ export const statCards = [
         data: '888',
         percentage: '+15.54%'
     },
-]
+];

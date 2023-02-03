@@ -1,76 +1,97 @@
 import React, {useState} from 'react';
 import {Button, Input} from "../comopnents";
 
+
+interface FormData {
+    name: string;
+    cardNumber: string;
+    expiration: string;
+    cvv: string;
+}
+
+const cardNumberPattern = /^(?:(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12})$/;
+const expirationPattern = /^(0[1-9]|1[0-2])\/(\d{2})$/;
+const cvvPattern = /^[0-9]{3}$/;
+const namePattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+const onlyNumbersPattern = /^\d+$/;
+
+
 const Paiement: React.FC = () => {
-
-    // REGEX
-    const cardNumberPattern = /^(?:(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12})$/;
-    const expiryDatePattern = /^(0[1-9]|1[0-2])\/(\d{2})$/;
-    const cvvPattern = /^[0-9]{3}$/;
-
+    const [name, setName] = useState('');
     const [cardNumber, setCardNumber] = useState('');
-    const [expiryDate, setExpiryDate] = useState('');
+    const [expiration, setExpiration] = useState('');
     const [cvv, setCvv] = useState('');
 
-    const handleCardNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCardNumber(event.target.value);
-    };
-
-    const handleExpiryDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setExpiryDate(event.target.value);
-    };
-
-    const handleCvvChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCvv(event.target.value);
-    };
+    const [errors, setErrors] = useState<FormData>({
+        cardNumber: "",
+        cvv: "",
+        expiration: "",
+        name: ""
+    })
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+        // Validate the inputs
+        if (name)
+
         if (!cardNumberPattern.test(cardNumber)) {
-            // Afficher une erreur pour le numéro de carte bancaire
+            // Handle card number error
         }
-
-        if (!expiryDatePattern.test(expiryDate)) {
-            // Afficher une erreur pour la date d'expiration
+        if (!expirationPattern.test(expiration)) {
+            // Handle expiration error
         }
-
         if (!cvvPattern.test(cvv)) {
-            // Afficher une erreur pour le code CVV
+            // Handle CVV error
         }
 
-        // Continuer avec la validation et la soumission des données
+        // Do the form submission or show a success message
     };
 
     return (
         <div className="page page-payment">
-            <h5>Paiement</h5>
-            <section className="section">
-                <form onSubmit={handleSubmit}>
-                    <Input
-                        placeholder="1111 2222 3333 4444"
-                        field="Numéro de carte"
-                        type="text"
-                        value={cardNumber}
-                    />
-                    <div>
-                        <Input
-                            placeholder="01/01"
-                            field="Date d'expiration"
-                            type="text"
-                            value={expiryDate}
-                        />
-                        <Input
-                            placeholder="123"
-                            field="CVV"
-                            type="text"
-                            value={cvv}
-                        />
-                    </div>
+            <form className="form-container">
+                <Input
+                    label="Nom"
+                    placeholder="Allan Lebogoss le sannnng"
+                    name="name"
+                    type="text"
+                    pattern={"/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/"}
+                    value={name}
+                    setValue={setName}
+                />
+                <Input
+                    label="Numéro de carte"
+                    placeholder="1111 2222 3333 4444"
+                    name="card-number"
+                    type="text"
+                    pattern="/^\d+$/"
+                    value={cardNumber}
+                    setValue={setCardNumber}
+                />
 
-                    <Button text="Payer" type="submit" />
-                </form>
-            </section>
+                <div className="field-container">
+                    <Input
+                        label="Date d'expiration"
+                        placeholder="01/23"
+                        name="expiration"
+                        type="text"
+                        value={expiration}
+                        setValue={setExpiration}
+                    />
+
+                    <Input
+                        label="CVV"
+                        placeholder="123"
+                        name="expiration"
+                        type="text"
+                        value={cvv}
+                        setValue={setCvv}
+                    />
+                </div>
+
+                <Button text="Payer" type="submit" />
+            </form>
         </div>
     );
 };

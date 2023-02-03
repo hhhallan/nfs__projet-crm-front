@@ -77,36 +77,10 @@ export const devisFactureOptions = {
     },
 };
 
-export const devisFactureData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-        {
-            label: 'Devis',
-            data: [8, 7.8, 6, 8, 7, 5, 6],
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        },
-        {
-            label: 'Facture',
-            data: [8, 7.8, 6, 8, 7, 5, 6],
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        },
-    ],
-};
-
 /* * * * * * * * * * *
 *  test - Line
 * * * * * * * * * * * */
-export const testLineData = {
-    labels: ["May 12", "May 13", "May 14", "May 15", "May 16", "May 17", "May 18", ],
-    datasets: [{
-        data: [8, 7.8, 6, 8, 7, 5, 6],
-        backgroundColor: 'transparent',
-        borderColor: 'red',
-        pointBorderColor: 'green',
-        pointBorderWidth: 4,
-        tension: 0.5
-    }]
-};
+
 export const testLineOptions = {
     responsive: true,
     plugins: {

@@ -7,9 +7,11 @@ const roles: { [key: string]: number } = {
 }
 
 export class AuthUser {
+   id!: string
    username!: string
    roles!: string[]
-   constructor(username: string, roles : string[]) {
+   constructor(id: string, username: string, roles: string[]) {
+      this.id = id;
       this.roles = roles;
       this.username = username;
    }
