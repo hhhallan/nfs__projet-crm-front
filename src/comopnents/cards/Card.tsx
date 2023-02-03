@@ -8,8 +8,8 @@ interface StatsCardProps {
 const Card: React.FC<StatsCardProps> = ({ title, children }) => {
     return (
        <div className="card" style={{ 'width': '100%' }} >
-            {title && <h4 className="card-title" style={{paddingBottom: 8}}>{title}</h4>}
-            <div className="card-content" style={{display: 'flex', flexDirection: 'column', gap: 16}}>
+            {title && <h4 className="card-title-empty" style={{paddingBottom: 8}}>{title}</h4>}
+            <div className="card-content-empty">
                 {children}
             </div>
         </div>
