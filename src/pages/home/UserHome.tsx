@@ -19,7 +19,7 @@ const UserHome: React.FC = () => {
     return (
         <div className="page page-home">
             <div>
-                <h5>Stats User {user?.username} </h5>
+                <h5>Stats User</h5>
                 <section className="section">
                     {statCards.map((card, index) => (
                         <StatsCard key={index} cardData={card}/>

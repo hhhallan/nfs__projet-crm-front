@@ -1,29 +1,44 @@
 import React from 'react';
 
 interface InputProps {
-    field: string;
-    type: 'text' | 'email' | 'password' | 'select';
+    label: string;
     placeholder?: string;
+    name: string;
+    type: 'text' | 'number' | 'email' | 'password' | 'select';
+    min?: number;
+    max?: number;
+    pattern?: string;
     value: string;
     setValue: (value: string) => void;
 }
-// Mets la 1e lettre en maj
-const label = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-// Enlève les accents
-const input = (str: string) => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const Input: React.FC<InputProps> = (
+    {
+        label = 'Label',
+        placeholder,
+        name,
+        type,
+        min,
+        max,
+        pattern,
+        value,
+        setValue }) => {
 
-const Input: React.FC<InputProps> = ({ placeholder, field = 'field', type, value, setValue }) => {
     return (
-        <div className="form__group">
+        <div className="field">
+            <label htmlFor={name}>{label}</label>
             <input
                 required
                 placeholder={placeholder ? placeholder : ''}
+                id={name}
+                name={name}
                 type={type}
+                minLength={min ? min : undefined}
+                maxLength={max ? max : undefined}
+                pattern={pattern ? pattern : undefined}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
             />
-            <label htmlFor={input(field)}>{label(field)}</label>
         </div>
     );
 };
