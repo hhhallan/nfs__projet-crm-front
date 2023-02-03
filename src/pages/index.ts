@@ -8,7 +8,7 @@ import AdminDetailPage from "./admin/AdminDetailPage";
 import PasswordForgot from "./PasswordForgot";
 import Error403 from "./errors/Error403";
 import Error404 from "./errors/Error404";
-import Product from "./Product";
+import ProductPage from "./Product";
 import AdminDetail from "./admin/details/AdminDetails";
 import ClientDetail from "./admin/details/ClientDetails";
 import ClientDetails from "./admin/details/ClientDetails";
@@ -53,5 +53,5 @@ export {
     Paiement,
     PasswordForgot,
     PasswordReset,
-    Product
+    ProductPage
 }

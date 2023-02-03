@@ -4,7 +4,7 @@ import AuthProvider, { createUser } from './auth/AuthProvider';
 import ServiceProvider from './services/context/ServiceProvider';
 import { AuthUser } from './auth/AuthContext';
 import { FormDevis, FormFacture, Header, Navigation } from './comopnents';
-import { Client, HomePage, AdminDetailPage, AdminPage, Historic, DevisFacturesPage, Paiement, Product, Auth, PasswordForgot, PasswordReset, Error404 } from './pages';
+import { Client, HomePage, AdminDetailPage, AdminPage, Historic, DevisFacturesPage, Paiement, ProductPage, Auth, PasswordForgot, PasswordReset, Error404 } from './pages';
 
 
 
@@ -36,7 +36,7 @@ const App: React.FC = () => {
                                 <Route path="payment" element={getElement(<Paiement />)} />
                                 <Route path="admin" element={getElement(<AdminPage />)} />
                                 <Route path="admin/:id" element={getElement(<AdminDetailPage />)} />
-                                <Route path="products" element={getElement(<Product />)} />
+                                <Route path="products" element={getElement(<ProductPage />)} />
                                 
                                 {/* si user pas connecté*/}
                                 <Route path="login" element={<Auth />} />
