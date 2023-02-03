@@ -50,6 +50,16 @@
   }
 }
 
+.card-link {
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+.card-link:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .card-stats {
   min-width: 150px;
 }

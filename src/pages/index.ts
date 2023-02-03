@@ -1,7 +1,7 @@
 import HomePage from "./home/HomePage";
 import Client from "./Client";
 import Historic from "./Historic";
-import DevisFactures from "./DevisFactures";
+import DevisFacturesPage from "./devis_factures/devisFacturesPage";
 import Paiement from "./Paiement";
 import Auth from "./Auth";
 import AdminPage from "./admin/AdminPage";
@@ -11,9 +11,9 @@ export {
     HomePage,
     AdminPage,
     AdminDetailPage,
+    DevisFacturesPage,
     Client,
     Historic,
-    DevisFactures,
     Paiement,
     Auth,
 }
