@@ -4,7 +4,8 @@ import Product from '../models/Product';
 interface InputProps {
     label: string
     placeholder?: string
-    name: string
+    name: string,
+    disabled?: boolean
     type: 'text' | 'number' | 'email' | 'password' | 'select';
     min?: number
     max?: number
@@ -21,6 +22,7 @@ const Input: React.FC<InputProps> = (
         type,
         min,
         max,
+        disabled = false,
         pattern,
         value,
         setValue }) => {
@@ -29,6 +31,7 @@ const Input: React.FC<InputProps> = (
         <div className="field">
             <label htmlFor={name}>{label}</label>
             <input
+                disabled={disabled}
                 required
                 placeholder={placeholder ? placeholder : ''}
                 id={name}

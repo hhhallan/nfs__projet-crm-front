@@ -17,8 +17,8 @@ interface FormProps {
 const FormDevis = ({}: FormProps) => {
     const {id} = useParams();
     const navigate = useNavigate();
-    const {user, updateToken} = useContext(AuthContext);
-    const {clientService, userService, devisService, productService} = useContext(ServiceContext);
+    const { user, updateToken } = useContext(AuthContext);
+    const { clientService, userService, devisService, productService, factureService } = useContext(ServiceContext);
 
     const [commercials, setCommercials] = useState<Commercial[]>([]);
     const [clients, setClients] = useState<Client[]>([]);
@@ -125,67 +125,38 @@ const FormDevis = ({}: FormProps) => {
             <Card title={(id ? 'Edition du ' : 'Création d\'un') + ' Devis'}>
                 <div className="form__group">
                     <form onSubmit={handleSubmit}>
-                        <div className="field-container">
-                            {user!.role_power == 2 &&
-                            <DropDown disabled={id != undefined} placeholder='Séléctionner le commercial'
-                                      label='commercial' name='commercial' value={commercial} setValue={setCommercial}
-                                      options={commercials} getOptionValue={(commercial: Commercial) => commercial.id}
-                                      getOptionLabel={(commercial: Commercial) => `${commercial.firstname} ${commercial.lastname}`}/>}
-                            <DropDown disabled={id != undefined} placeholder='Séléctionner le client' label='client'
-                                      name='client' value={client} setValue={setClient} options={clients}
-                                      getOptionValue={(commercial: Commercial) => commercial.id}
-                                      getOptionLabel={(client: Client) => `${client.firstname} ${client.lastname}`}/>
-                        </div>
-
                         <Table headers={['Quantité', 'Produit', 'Supprimer']}>
                             {!contents.length && <tr>
                                 <td colSpan={3}><h5>No content ...</h5></td>
                             </tr>}
                             {contents.map((c, index) => (
-                                <tr key={index} style={{}}>
+                                 <tr key={index} style={{}}>
                                     <td width={'10%'}>
-                                        <Input label={'Quantité'} name={'quantity' + index} type="number" key={index}
-                                               value={c.quantity?.toString() ?? ''} setValue={(t) => {
-                                            contents[index].quantity = parseInt(t);
-                                            setContents([...contents])
-                                        }}/>
+                                        <Input disabled={user?.role_power == 0} label={'Quantity'} name={'quantity'+index} type="number" key={index} value={c.quantity?.toString() ?? ''} setValue={(t) => { contents[index].quantity = parseInt(t); setContents([...contents])  }} />
                                     </td>
                                     <td>
-                                        <DropDown placeholder='Séléctionner un produit' label={'Produit'}
-                                                  name={'product' + index} key={index} value={c.productId}
-                                                  setValue={(t) => {
-                                                      contents[index].productId = t;
-                                                      setContents([...contents])
-                                                  }} options={products}
-                                                  getOptionValue={(product: Product) => product.id!}
-                                                  getOptionLabel={(product: Product) => `${product.name} / ${product.plateforme}`}/>
+                                        <DropDown disabled={user?.role_power == 0}  placeholder='selectionner un produit' label={'Produit'} name={'product'+index}  key={index} value={c.productId} setValue={(t) =>{contents[index].productId = t; setContents([...contents])}} options={products} getOptionValue={(product: Product) => product.id! } getOptionLabel={(product: Product) => `${product.name} / ${product.plateforme}`}/>
                                     </td>
 
                                     <td width={'10%'}>
-                                        <Button type='button' text='Supprimer' small style={{background: 'var(--clr-others-error)'}}
-                                                onClick={(() => {
-                                                    contents.splice(index, 1);
-                                                    setContents([...contents]);
-                                                })}/>
+                                        <Button disabled={user?.role_power == 0}  type='button' text='supprimer' small style={{background: 'red'}} onClick={(() => { contents.splice(index, 1); setContents([...contents]);} )}/>
                                     </td>
                                 </tr>
                             ))}
 
-                            <tr>
+                            {user?.role_power !== 0 && <tr>
                                 <td colSpan={3}>
-                                    <Button type='button' text='Ajouter un contenu'
-                                            style={{marginTop: '12px', marginBottom: '12px'}} onClick={(() => {
-                                        console.log('oui');
-                                        contents.push({quantity: 0});
-                                        setContents([...contents]);
-                                    })}/>
+                                     <Button  type='button' text='ajouter un contenue' style={{marginTop: '12px', marginBottom: '12px'}} onClick={(() => {console.log('oui'); contents.push({ quantity: 0 }); setContents([...contents]);} )}/>
                                 </td>
-                            </tr>
+                            </tr>}
 
                         </Table>
 
-
-                        <Button text={id ? "Modifier le devis" : "Ajouter le devis"} type="submit"/>
+                        <div style={{display: 'flex', flexDirection: 'row', gap: '12px'}}>
+                            {user?.role_power !== 0 && <Button text={id ? "Modifier le devis" : "Ajouter le devis"} type="submit" />}
+                            {id && user?.role_power !== 0 && <Button text={"Créer une facture"} type="button" style={{background: 'green'}} onClick={() => {factureService.create(id); navigate('/quotes-invoices')}} /> } 
+                            <Button  text={"retour"} type="button" onClick={() => navigate('/quotes-invoices')} />
+                        </div>
                     </form>
                 </div>
             </Card>

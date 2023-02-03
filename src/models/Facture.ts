@@ -5,7 +5,7 @@ export default class Facture {
    id?: string;
    create_at!: Date;
    last_modification!: Date;
-   state!: string;
+   stat!: string;
    client!: User;
    commercial!: User;
    content!: {quantity: number, product: Product}[];

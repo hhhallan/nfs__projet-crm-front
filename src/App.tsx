@@ -1,22 +1,6 @@
 import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
 import AuthProvider, { createUser } from './auth/AuthProvider';
-
-import {
-    HomePage,
-    Client,
-    Historic,
-    Auth,
-    Paiement,
-    AdminPage,
-    AdminDetailPage,
-    DevisFacturesPage,
-    PasswordForgot,
-    Error404,
-    Product,
-    PasswordReset
-} from "./pages/index";
-import {Header, Navigation, FormDevis} from "./comopnents/index"
 import ServiceProvider from './services/context/ServiceProvider';
 import { AuthUser } from './auth/AuthContext';
 
@@ -46,6 +30,7 @@ const App: React.FC = () => {
                                 <Route path="quotes-invoices" element={getElement(<DevisFacturesPage />)} />
                                 <Route path="devis/new" element={getElement(<FormDevis />)} />
                                 <Route path="devis/:id/edit" element={getElement(<FormDevis />)} />
+                                <Route path="facture/:id/edit" element={getElement(<FormFacture />)} />
                                 <Route path="payment" element={getElement(<Paiement />)} />
                                 <Route path="admin" element={getElement(<AdminPage />)} />
                                 <Route path="admin/:id" element={getElement(<AdminDetailPage />)} />

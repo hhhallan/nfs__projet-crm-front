@@ -13,7 +13,6 @@ const AdminDF: React.FC = () => {
 	const { user, updateToken } = useContext(AuthContext);
 	const { devisService, factureService } = useContext(ServiceContext);
 
-	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [showDevis, setShowDevis] = useState(false);
 	const [devis, setDevis] = useState<Devis[]>([]);
 	const [factures, setFactures] = useState<Facture[]>([]);
@@ -52,36 +51,41 @@ const AdminDF: React.FC = () => {
 		return `${formattedPriceWithSpaces} €`;
 	}
 
-	const openModal = () => setIsModalOpen(true);
-	const closeModal = () => setIsModalOpen(false);
-	
+	const lastModification = (a: (Devis|Facture), b: (Devis|Facture)): number => {
+		return moment(b.last_modification).unix() - moment(a.last_modification).unix()
+	}
+
 	return (
 		<div className="page page-devis-factures">
-			<section className="section">
-				<a href={'/devis/new'}>Ajouter un devis</a>
-			</section>
+			<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+				<section className="section">
+					<Button disabled={!showDevis} type='button' text='Ajouter un devis' onClick={() => navigate('/devis/new')}/>
+				</section>
 
-			<Button onClick={handleClick} text="Changer de type" type="button" link	/>
+				<div style={{display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'end'}}>
+					<Button onClick={handleClick} text="Changer de type" type="button" link	/>
+					<h5>{showDevis ? 'Devis - '+devis.length : 'Factures - '+factures.length}</h5>
+				</div>
+			</div>
+			
 			{showDevis ? (
 				<>
-					<h5>Devis - { devis.length }</h5>
 					<section className="section">
-						{devis.map((card, index) => (
+						{devis.sort(lastModification).map((card, index) => (
 							<DevisCard
 								key={index}
-								cardData={{id: card.id!, title: card.id!, createdAt: moment(card.create_at).format('L'), amount: ToPrice(card.content.reduce((pre, val) => pre + val.quantity * (val.product.price ?? 0), 0))  }}
+								cardData={{id: card.id!, title: card.id!, createdAt: moment(card.create_at).lang("fr").format('L'), amount: ToPrice(card.content.reduce((pre, val) => pre + val.quantity * (val.product.price ?? 0), 0))  }}
 							/>
 						))}
 					</section>
 				</>
 			) : (
 				<>
-					<h5>Factures - { factures.length }</h5>
 					<section className="section">
-						{factures.map((card, index) => (
+						{factures.sort(lastModification).map((card, index) => (
 							<FactureCard
 								key={index}
-								cardData={{id: card.id!, title: card.id!, createdAt: moment(card.create_at).format('L'), state: card.state, amount: ToPrice(card.content.reduce((pre, val) => pre + val.quantity * (val.product.price ?? 0), 0))  }}
+								cardData={{id: card.id!, title: card.id!, createdAt: moment(card.create_at).lang("de").format('L'), state: card.stat, amount: ToPrice(card.content.reduce((pre, val) => pre + val.quantity * (val.product.price ?? 0), 0))  }}
 							/>
 						))}
 					</section>
