@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
 import AuthProvider, { createUser } from './auth/AuthProvider';
 
-import {HomePage, Client, Historic, DevisFactures, Auth, Paiement} from "./pages/index";
+import {HomePage, Client, Historic, DevisFactures, Auth, Paiement, AdminPage, AdminDetailPage} from "./pages/index";
 import {Header, Navigation} from "./comopnents/index"
 import ServiceProvider from './services/context/ServiceProvider';
 import { AuthUser } from './auth/AuthContext';
@@ -34,6 +34,8 @@ const App: React.FC = () => {
                                 <Route path="history" element={getElement(<Historic />)} />
                                 <Route path="quotes-invoices" element={getElement(<DevisFactures />)} />
                                 <Route path="payment" element={getElement(<Paiement />)} />
+                                <Route path="admin" element={getElement(<AdminPage />)} />
+                                <Route path="admin/:id" element={getElement(<AdminDetailPage />)} />
                                 <Route path="products" element={getElement(<Product />)} />
                                 
                                 {/* si user pas connecté*/}
