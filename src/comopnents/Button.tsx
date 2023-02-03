@@ -4,6 +4,7 @@ interface BtnProps {
     style?: React.CSSProperties
     small?: boolean;
     outline?: boolean;
+    disabled?: boolean
     text: string;
     link?: boolean;
     type: 'button' | 'submit' | 'reset';
@@ -13,6 +14,7 @@ interface BtnProps {
 const Button: React.FC<BtnProps> = ({
         style,
         type,
+        disabled = false,
         link,
         small,
         outline,
@@ -21,7 +23,7 @@ const Button: React.FC<BtnProps> = ({
     }) => {
 
     return (
-        <button style={style} onClick={onClick} type={type} className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
+        <button disabled={disabled} style={style} onClick={onClick} type={type} className={`${small ? 'btn--small' : ''} ${outline ? 'btn--outline' : ''} ${link ? 'btn--link' : ''}`}>
             {text}
         </button>
     );

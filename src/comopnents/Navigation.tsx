@@ -16,7 +16,7 @@ const Navigation: React.FC = () => {
     return (
         <nav className="navigation">
             <div>
-                Logo
+                CRM
             </div>
 
             <div className="nav-items">

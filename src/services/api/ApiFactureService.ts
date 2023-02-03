@@ -45,10 +45,10 @@ export default class ApiFactureService implements IFactureService {
       });
    }
 
-   create(devis: Devis): Promise<Facture> {
+   create(devisId: string): Promise<Facture> {
       this.checkToken();
       return new Promise((resolve, reject) => {
-         axios.post(`${API_URL}/facture/${devis.id}`, {}, {headers}).then(data => {
+         axios.post(`${API_URL}/facture/${devisId}`, JSON.stringify({}), {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });
@@ -63,17 +63,10 @@ export default class ApiFactureService implements IFactureService {
       });
    }
 
-   update(id: string, facture: Facture): Promise<Facture> {
+   update(id: string, content: any[]): Promise<Facture> {
       this.checkToken();
-      let body = facture.content.map(c => {
-         return {
-            quantity: c.quantity,
-            product_id: c.product.id
-         }
-      })
-
       return new Promise((resolve, reject) => {
-         axios.put(`${API_URL}/facture/${id}`, body, {headers}).then(data => {
+         axios.put(`${API_URL}/facture/${id}`, JSON.stringify(content), {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });
@@ -82,7 +75,7 @@ export default class ApiFactureService implements IFactureService {
    validate(id: string): Promise<Facture> {
       this.checkToken();
       return new Promise((resolve, reject) => {
-         axios.put(`${API_URL}/facture/${id}/validate`, {}, {headers}).then(data => {
+         axios.put(`${API_URL}/facture/${id}/validate`, JSON.stringify({}), {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });

@@ -50,5 +50,10 @@ button {
       opacity: 80%;
     }
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: rgba(0,0,0,0.1);
+  }
 }
 
