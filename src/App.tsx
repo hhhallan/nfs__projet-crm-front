@@ -3,6 +3,8 @@ import {BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
 import AuthProvider, { createUser } from './auth/AuthProvider';
 import ServiceProvider from './services/context/ServiceProvider';
 import { AuthUser } from './auth/AuthContext';
+import { FormDevis, FormFacture, Header, Navigation } from './comopnents';
+import { Client, HomePage, AdminDetailPage, AdminPage, Historic, DevisFacturesPage, Paiement, Product, Auth, PasswordForgot, PasswordReset, Error404 } from './pages';
 
 
 
