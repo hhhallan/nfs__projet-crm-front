@@ -8,6 +8,7 @@ const pathNameMapping : { [key: string]: string } = {
     '/quotes-invoices': 'Devis & Factures',
     '/payment': 'Paiement',
     '/login': 'Connexion',
+    '/products': 'Produits',
     '/': 'Tableau de bord',
 };
 

@@ -7,6 +7,7 @@ import {Header, Navigation} from "./comopnents/index"
 import ServiceProvider from './services/context/ServiceProvider';
 import { AuthUser } from './auth/AuthContext';
 import Error404 from './pages/errors/Error404';
+import Product from "./pages/Product";
 
 
 
@@ -35,6 +36,7 @@ const App: React.FC = () => {
                                 <Route path="payment" element={getElement(<Paiement />)} />
                                 <Route path="admin" element={getElement(<AdminPage />)} />
                                 <Route path="admin/:id" element={getElement(<AdminDetailPage />)} />
+                                <Route path="products" element={getElement(<Product />)} />
                                 
                                 {/* si user pas connecté*/}
                                 <Route path="login" element={<Auth />} />

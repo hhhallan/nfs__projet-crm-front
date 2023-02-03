@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    FaDollarSign, FaHome, FaStripeS, FaUsers, FaHistory,
+    FaDollarSign, FaHome, FaStripeS, FaUsers, FaHistory, FaUserPlus, FaShoppingCart,
     HiDocumentAdd, HiDocumentSearch, HiDocumentReport, MdOutlineLogout, FaUserAlt,
 } from "react-icons/all";
 
@@ -47,6 +47,12 @@ export const navLinks: Nav[] = [
         icon: FaUsers,
         text: 'Gestion des users',
         permission: 2
-    }
+    },
+    {
+        id: 'products',
+        icon: FaShoppingCart,
+        text: 'Produits',
+        permission: 0
+    },
 ];
 
