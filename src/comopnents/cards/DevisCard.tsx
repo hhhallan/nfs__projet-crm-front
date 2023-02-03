@@ -11,7 +11,7 @@ interface DevisCardProps {
 
 const DevisCard: React.FC<DevisCardProps> = ({cardData: {id, title, amount, createdAt}}) => {
     return (
-        <a className="card card-link" href={'/devis/'+id}>
+        <a className="card card-link" href={'/devis/'+id+'/edit'}>
             <p className="card-title">Devis N°{title}</p>
             <div className="card-content">
                 <span>{amount}</span>

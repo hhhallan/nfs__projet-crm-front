@@ -58,10 +58,7 @@ const AdminDF: React.FC = () => {
 	return (
 		<div className="page page-devis-factures">
 			<section className="section">
-				<button onClick={openModal}>Ajouter un devis</button>
-				<Modal isOpen={isModalOpen} closeModal={closeModal} title="Création de devis">
-					<FormDevis/>
-				</Modal>
+				<a href={'/devis/new'}>Ajouter un devis</a>
 			</section>
 
 			<Button onClick={handleClick} text="Changer de type" type="button" link	/>

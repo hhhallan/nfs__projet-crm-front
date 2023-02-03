@@ -44,21 +44,10 @@ export default class ApiDevisService implements IDevisService {
       });
    }
 
-   create(devis: Devis): Promise<Devis> {
+   create(content: any): Promise<Devis> {
       this.checkToken();
-      let body = {
-         client_id: devis.client.id,
-         commercial_id: devis.commercial.id,
-         contents: devis.content.map(c => {
-            return {
-               quantity: c.quantity,
-               product_id: c.product.id
-            }
-         })
-      }
-
       return new Promise((resolve, reject) => {
-         axios.post(`${API_URL}/devis`, body, {headers}).then(data => {
+         axios.post(`${API_URL}/devis`, JSON.stringify(content), {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });
@@ -73,17 +62,10 @@ export default class ApiDevisService implements IDevisService {
       });
    }
 
-   update(id: string, devis: Devis): Promise<Devis> {
+   update(id: string, content: any[]): Promise<Devis> {
       this.checkToken();
-      let body = devis.content.map(c => {
-         return {
-            quantity: c.quantity,
-            product_id: c.product.id
-         }
-      })
-
       return new Promise((resolve, reject) => {
-         axios.put(`${API_URL}/devis/${id}`, body, {headers}).then(data => {
+         axios.put(`${API_URL}/devis/${id}`,JSON.stringify(content), {headers}).then(data => {
             resolve(data.data);
          }).catch((err: AxiosError) => reject(err))
       });
