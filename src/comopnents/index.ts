@@ -1,23 +1,29 @@
 import Navigation from "./Navigation";
 import Button from "./Button";
 import Header from "./Header";
-import TableClient from "./TableClient";
 import StatsCard from "./cards/StatsCard";
 import Chart from "./Chart";
+import Modal from "./Modal";
+import Table from "./Table";
 import Input from "./Input";
-import TableHistoric from "./TableHistoric";
 import FormDevis from "./FormDevis";
 import FormClients from "./FormClient";
+import DevisCard from "./cards/DevisCard";
+import ProductCard from "./cards/ProductCard";
+import FactureCard from "./cards/FactureCard";
 
 export {
     Navigation,
     Button,
     Header,
-    TableClient,
     StatsCard,
     Chart,
+    Modal,
+    Table,
     Input,
-    TableHistoric,
     FormDevis,
     FormClients,
+    DevisCard,
+    ProductCard,
+    FactureCard
 }

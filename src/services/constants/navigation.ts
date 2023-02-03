@@ -1,60 +1,58 @@
 import React from "react";
 import {
-    FaDollarSign, FaHome, FaStripeS, FaUserPlus, FaHistory,
-    HiDocumentAdd, HiDocumentSearch, HiDocumentReport, MdOutlineLogout,
+    FaDollarSign, FaHome, FaStripeS, FaUsers, FaHistory, FaUserPlus, FaShoppingCart,
+    HiDocumentAdd, HiDocumentSearch, HiDocumentReport, MdOutlineLogout, FaUserAlt,
 } from "react-icons/all";
 
 interface Nav {
     id: string,
     icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
-    text: string
+    text: string,
+    permission: number[]
 }
 
 export const navLinks: Nav[] = [
     {
         id: '/',
         icon: FaHome,
-        text: 'Dashboard'
+        text: 'Tableau de bord',
+        permission: [0, 1, 2]
     },
     {
-        id: 'devis-factures',
+        id: 'clients',
+        icon: FaUserAlt,
+        text: 'Clients',
+        permission: [1]
+    },
+    {
+        id: 'quotes-invoices',
         icon: HiDocumentReport,
-        text: 'Devis / Factures'
+        text: 'Devis / Factures',
+        permission: [0, 1, 2]
     },
     {
-        id: 'paiment',
+        id: 'payment',
         icon: FaDollarSign,
-        text: 'Paiement'
-    },
-    {
-        id: 'add-client',
-        icon: FaUserPlus,
-        text: 'Ajout client'
-    },
-    {
-        id: 'add-devis',
-        icon: HiDocumentAdd,
-        text: 'Création de devis'
-    },
-    {
-        id: 'voir-devis-facturesme',
-        icon: HiDocumentSearch,
-        text: 'Voir devis/factures'
+        text: 'Paiement',
+        permission: [0]
     },
     {
         id: 'gestion-stripe',
         icon: FaStripeS,
-        text: 'Gestion Stripes'
+        text: 'Gestion Stripes',
+        permission: [2]
     },
     {
-        id: 'historique',
-        icon: FaHistory,
-        text: 'Historique'
+        id: 'admin',
+        icon: FaUsers,
+        text: 'Gestion des users',
+        permission: [2]
     },
     {
-        id: 'logout',
-        icon: MdOutlineLogout,
-        text: 'Déconnexion'
+        id: 'products',
+        icon: FaShoppingCart,
+        text: 'Produits',
+        permission: [0, 1, 2]
     },
 ];
 

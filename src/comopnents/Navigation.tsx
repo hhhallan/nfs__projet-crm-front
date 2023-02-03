@@ -1,11 +1,17 @@
-import React from 'react';
-import {Link, NavLink} from "react-router-dom";
+import React, { useContext } from 'react';
+import { MdOutlineLogout, MdOutlineLogin } from 'react-icons/all';
+import {Link, NavLink, useNavigate} from "react-router-dom";
+import { AuthContext } from '../auth/AuthContext';
 import {navLinks} from "../services/constants/navigation";
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
+    const navigate = useNavigate();
+    const { user, updateToken } = useContext(AuthContext);
 
-    // @ts-ignore
-    const active = ({isActive}) => ({fontWeight: isActive ? '700' : '400'});
+    let activeStyle = {
+        fontWeight: '700',
+        color: 'var(--clr-primary-purple)'
+    };
 
     return (
         <nav className="navigation">
@@ -15,14 +21,30 @@ const Navigation = () => {
 
             <div className="nav-items">
                 <ul>
-                    {navLinks.map((nav) => (
+                    {navLinks.filter(navLinks => navLinks.permission.filter(p => p == (user ? user.role_power : -1 ) ).length).map((nav) => (
                         <li key={nav.id}>
-                            <NavLink to={nav.id} className="nav-item" style={active}>
-                                <nav.icon />
+                            <NavLink to={nav.id} className={({ isActive }) => isActive ? 'nav-item activate' : 'nav-item'} >
+                                <nav.icon className="icon" />
                                 {nav.text}
                             </NavLink>
                         </li>
                     ))}
+
+                    {user ? (
+                        <li key={'logout'}>
+                            <a onClick={() => { updateToken(null); navigate('/login'); }} className={'nav-item'} >
+                                <MdOutlineLogout className="icon" />
+                                Déconnexion
+                            </a>
+                        </li>
+                    ): (
+                        <li key={'login'}>
+                            <NavLink to={'login'} className={({ isActive }) => isActive ? 'nav-item activate' : 'nav-item'} >
+                                <MdOutlineLogin className="icon" />
+                                Connexion
+                            </NavLink>
+                        </li>
+                    )}
                 </ul>
             </div>
         </nav>

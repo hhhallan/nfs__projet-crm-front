@@ -2,14 +2,21 @@ import React from 'react';
 import {useLocation} from "react-router-dom";
 
 const pathNameMapping : { [key: string]: string } = {
-    '/': 'Dashboard',
-    '/historique': 'Historique',
-    '/contact': 'Contact'
+    '/clients': 'Clients',
+    '/admin/.*': 'Gestion des utilisateurs / détail',
+    '/admin': 'Gestion des utilisateurs',
+    '/quotes-invoices': 'Devis & Factures',
+    '/payment': 'Paiement',
+    '/login': 'Connexion',
+    '/products': 'Produits',
+    '/': 'Tableau de bord',
 };
 
-const Header = () => {
+const Header: React.FC = () => {
     const location = useLocation();
-    const pageName = pathNameMapping[location.pathname] || 'Not found';
+    let route = Object.keys(pathNameMapping).find(path => location.pathname.match(path)) ?? ''
+
+    const pageName =  pathNameMapping[route] || 'Not found';
 
 
     return (

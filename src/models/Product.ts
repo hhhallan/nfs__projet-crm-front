@@ -1,8 +1,8 @@
 export default class Product {
-   private id: string;
-   private code_product: string;
-   private name: string;
-   private plateforme: string;
-   private price: number;
-   private image: string;
+    id: string | undefined;
+    code_product: string | undefined;
+    name: string | undefined;
+    plateforme: string | undefined;
+    price: number | undefined;
+    image: string | undefined;
 }

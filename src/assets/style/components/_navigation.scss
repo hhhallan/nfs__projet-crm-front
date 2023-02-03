@@ -31,6 +31,15 @@
     gap: 1.5rem;
     transition: 0.2s background-color;
 
+    &.activate{
+      font-weight: 700;
+      color: var(--clr-primary-purple);
+      
+      .icon{
+        fill: var(--clr-primary-purple);
+      }
+    }
+
     &:hover {
       opacity: 80%;
     }
