@@ -1,21 +1,21 @@
-import { AxiosError } from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from '../auth/AuthContext';
+import {AxiosError} from 'axios';
+import React, {useContext, useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
+import {AuthContext} from '../auth/AuthContext';
 import {Input, Button, DropDown, Table} from '../comopnents/index';
 import Product from '../models/Product';
 import Client from '../models/User/Client';
 import Commercial from '../models/User/Commercial';
 import ApiProductService from '../services/api/ApiProductService';
-import { ServiceContext } from '../services/context/ServiceContext';
+import {ServiceContext} from '../services/context/ServiceContext';
 import Card from './cards/Card';
 
 interface FormProps {
-    
+
 }
 
-const FormDevis = ({  }: FormProps) => {
-    const { id } = useParams();
+const FormDevis = ({}: FormProps) => {
+    const {id} = useParams();
     const navigate = useNavigate();
     const { user, updateToken } = useContext(AuthContext);
     const { clientService, userService, devisService, productService, factureService } = useContext(ServiceContext);
@@ -24,7 +24,7 @@ const FormDevis = ({  }: FormProps) => {
     const [clients, setClients] = useState<Client[]>([]);
     const [commercial, setCommercial] = useState<string>();
     const [client, setClient] = useState<string>();
-    const [contents, setContents] = useState<{quantity?: number, productId?: string}[]>([]);
+    const [contents, setContents] = useState<{ quantity?: number, productId?: string }[]>([]);
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const FormDevis = ({  }: FormProps) => {
         requestClient.then(data => {
             setClients(data);
         }).catch((err: AxiosError) => {
-            if(err.status === 401) {
+            if (err.status === 401) {
                 updateToken(null);
                 navigate('/login');
             } else {
@@ -40,11 +40,11 @@ const FormDevis = ({  }: FormProps) => {
             }
         });
 
-        if(user?.role_power == 2) {
+        if (user?.role_power == 2) {
             userService.getAll().then(data => {
                 setCommercials(data.filter(c => c.type == "COMMERCIAL").map(c => c as Commercial));
             }).catch((err: AxiosError) => {
-                if(err.status === 401) {
+                if (err.status === 401) {
                     updateToken(null);
                     navigate('/login');
                 } else {
@@ -53,13 +53,15 @@ const FormDevis = ({  }: FormProps) => {
             });
         }
 
-        if(id) {
+        if (id) {
             devisService.read(id).then(devis => {
                 setClient(devis.client.id);
                 setCommercial(devis.commercial.id);
-                setContents(devis.content.map(c => {return { quantity: c.quantity, productId: c.product.id! }}));
+                setContents(devis.content.map(c => {
+                    return {quantity: c.quantity, productId: c.product.id!}
+                }));
             }).catch((err: AxiosError) => {
-                if(err.status === 401) {
+                if (err.status === 401) {
                     updateToken(null);
                     navigate('/login');
                 } else {
@@ -71,7 +73,7 @@ const FormDevis = ({  }: FormProps) => {
         productService.getAll().then(data => {
             setProducts(data);
         }).catch((err: AxiosError) => {
-            if(err.status === 401) {
+            if (err.status === 401) {
                 updateToken(null);
                 navigate('/login');
             } else {
@@ -82,33 +84,33 @@ const FormDevis = ({  }: FormProps) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
+
         let data = {
             client_id: client,
             commercial_id: commercial,
             contents: contents.map(c => {
                 return {
-                   quantity: c.quantity,
-                   product_id: c.productId
+                    quantity: c.quantity,
+                    product_id: c.productId
                 }
-             })
+            })
         }
-        if(id) {
+        if (id) {
             devisService.update(id, data.contents).then(data => {
                 navigate('/quotes-invoices');
             }).catch((err: AxiosError) => {
-                if(err.status === 401) {
+                if (err.status === 401) {
                     updateToken(null);
                     navigate('/login');
                 } else {
                     console.error(err)
                 }
             });
-        }else{
+        } else {
             devisService.create(data).then(data => {
                 navigate('/quotes-invoices');
             }).catch((err: AxiosError) => {
-                if(err.status === 401) {
+                if (err.status === 401) {
                     updateToken(null);
                     navigate('/login');
                 } else {
@@ -116,25 +118,26 @@ const FormDevis = ({  }: FormProps) => {
                 }
             });
         }
-        console.log(contents)
     }
 
     return (
         <div className='page'>
-            <Card title={(id ? 'Edition du ' : 'Création d\'un') +' Devis'}>
+            <Card title={(id ? 'Edition du ' : 'Création d\'un') + ' Devis'}>
                 <div className="form__group">
                     <form onSubmit={handleSubmit}>
-                        <Table headers={['quantity', 'product', 'supprimer']}>
-                            {!contents.length &&  <tr><td colSpan={3}><h5>No content ...</h5></td></tr>}
+                        <Table headers={['Quantité', 'Produit', 'Supprimer']}>
+                            {!contents.length && <tr>
+                                <td colSpan={3}><h5>No content ...</h5></td>
+                            </tr>}
                             {contents.map((c, index) => (
-                                <tr key={index} style={{}}>
+                                 <tr key={index} style={{}}>
                                     <td width={'10%'}>
                                         <Input disabled={user?.role_power == 0} label={'Quantity'} name={'quantity'+index} type="number" key={index} value={c.quantity?.toString() ?? ''} setValue={(t) => { contents[index].quantity = parseInt(t); setContents([...contents])  }} />
                                     </td>
                                     <td>
                                         <DropDown disabled={user?.role_power == 0}  placeholder='selectionner un produit' label={'Produit'} name={'product'+index}  key={index} value={c.productId} setValue={(t) =>{contents[index].productId = t; setContents([...contents])}} options={products} getOptionValue={(product: Product) => product.id! } getOptionLabel={(product: Product) => `${product.name} / ${product.plateforme}`}/>
                                     </td>
-                                    
+
                                     <td width={'10%'}>
                                         <Button disabled={user?.role_power == 0}  type='button' text='supprimer' small style={{background: 'red'}} onClick={(() => { contents.splice(index, 1); setContents([...contents]);} )}/>
                                     </td>
@@ -148,7 +151,7 @@ const FormDevis = ({  }: FormProps) => {
                             </tr>}
 
                         </Table>
-                        
+
                         <div style={{display: 'flex', flexDirection: 'row', gap: '12px'}}>
                             {user?.role_power !== 0 && <Button text={id ? "Modifier le devis" : "Ajouter le devis"} type="submit" />}
                             {id && user?.role_power !== 0 && <Button text={"Créer une facture"} type="button" style={{background: 'green'}} onClick={() => {factureService.create(id); navigate('/quotes-invoices')}} /> } 
@@ -158,7 +161,7 @@ const FormDevis = ({  }: FormProps) => {
                 </div>
             </Card>
         </div>
-        
+
     );
 };
 
