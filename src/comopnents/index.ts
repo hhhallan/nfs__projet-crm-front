@@ -12,6 +12,7 @@ import DevisCard from "./cards/DevisCard";
 import ProductCard from "./cards/ProductCard";
 import FactureCard from "./cards/FactureCard";
 import DropDown from './DropDown';
+import Card from "./cards/Card";
 
 export {
     Navigation,
@@ -27,5 +28,6 @@ export {
     DevisCard,
     ProductCard,
     FactureCard,
-    DropDown
+    DropDown,
+    Card
 }

@@ -9,6 +9,8 @@ const pathNameMapping : { [key: string]: string } = {
     '/payment': 'Paiement',
     '/login': 'Connexion',
     '/products': 'Produits',
+    '/forgot-password': 'Mot de passe oublié',
+    '/reset-password': 'Réinitialisation du mot de passe',
     '/': 'Tableau de bord',
 };
 

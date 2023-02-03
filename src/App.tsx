@@ -2,13 +2,23 @@ import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
 import AuthProvider, { createUser } from './auth/AuthProvider';
 
-import {HomePage, Client, Historic, Auth, Paiement, AdminPage, AdminDetailPage, DevisFacturesPage} from "./pages/index";
-import {Header, Navigation} from "./comopnents/index"
+import {
+    HomePage,
+    Client,
+    Historic,
+    Auth,
+    Paiement,
+    AdminPage,
+    AdminDetailPage,
+    DevisFacturesPage,
+    PasswordForgot,
+    Error404,
+    Product,
+    PasswordReset
+} from "./pages/index";
+import {Header, Navigation, FormDevis} from "./comopnents/index"
 import ServiceProvider from './services/context/ServiceProvider';
 import { AuthUser } from './auth/AuthContext';
-import Error404 from './pages/errors/Error404';
-import FormDevis from './comopnents/FormDevis';
-import Product from "./pages/Product";
 
 
 
@@ -43,6 +53,8 @@ const App: React.FC = () => {
                                 
                                 {/* si user pas connecté*/}
                                 <Route path="login" element={<Auth />} />
+                                <Route path="forgot-password" element={<PasswordForgot />} />
+                                <Route path="reset-password" element={<PasswordReset />} />
                                 <Route path='*' element={<Error404/>}/>
                             </Routes>
                         </div>
