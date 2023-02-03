@@ -7,10 +7,11 @@ import Modal from "./Modal";
 import Table from "./Table";
 import Input from "./Input";
 import FormDevis from "./FormDevis";
-import FormClients from "./FormClient";
+import FormProspect from "./FormProspect";
 import DevisCard from "./cards/DevisCard";
 import ProductCard from "./cards/ProductCard";
 import FactureCard from "./cards/FactureCard";
+import DropDown from './DropDown';
 
 export {
     Navigation,
@@ -22,8 +23,9 @@ export {
     Table,
     Input,
     FormDevis,
-    FormClients,
+    FormProspect,
     DevisCard,
     ProductCard,
-    FactureCard
+    FactureCard,
+    DropDown
 }

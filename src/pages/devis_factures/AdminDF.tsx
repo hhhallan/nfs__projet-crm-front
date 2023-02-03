@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { AuthContext } from '../../auth/AuthContext';
-import { Button, DevisCard, FactureCard, Modal } from '../../comopnents';
+import { Button, DevisCard, FactureCard, FormDevis, Modal } from '../../comopnents';
 import Devis from '../../models/Devis';
 import Facture from '../../models/Facture';
 import { ServiceContext } from '../../services/context/ServiceContext';
@@ -60,7 +60,7 @@ const AdminDF: React.FC = () => {
 			<section className="section">
 				<button onClick={openModal}>Ajouter un devis</button>
 				<Modal isOpen={isModalOpen} closeModal={closeModal} title="Création de devis">
-					
+					<FormDevis/>
 				</Modal>
 			</section>
 

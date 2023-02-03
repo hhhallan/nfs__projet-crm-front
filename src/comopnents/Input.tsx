@@ -2,15 +2,15 @@ import React from 'react';
 import Product from '../models/Product';
 
 interface InputProps {
-    label: string;
-    placeholder?: string;
-    name: string;
+    label: string
+    placeholder?: string
+    name: string
     type: 'text' | 'number' | 'email' | 'password' | 'select';
-    min?: number;
-    max?: number;
-    pattern?: string;
-    value: string;
-    setValue: (value: string) => void;
+    min?: number
+    max?: number
+    pattern?: string
+    value: string
+    setValue: (value: string) => void
 }
 
 const Input: React.FC<InputProps> = (

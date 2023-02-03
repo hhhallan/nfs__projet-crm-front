@@ -30,7 +30,6 @@ export function createUser(token: string|null): AuthUser|null  {
       let jsonPayload: { iat: number, exp: number, roles: string[], username: string, id: string } = JSON.parse(atob(payload));
       
       if (Date.now()/1000 < jsonPayload.exp) {
-         console.log('update token !')
          sessionStorage.setItem("session", token!);
          return new AuthUser(jsonPayload.id, jsonPayload.username, jsonPayload.roles)
       }

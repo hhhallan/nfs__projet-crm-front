@@ -1,27 +1,29 @@
-import React, { useState } from 'react';
-import {Input, Button} from '../comopnents/index';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../auth/AuthContext';
+import {Input, Button, DropDown} from '../comopnents/index';
 import Product from '../models/Product';
+import Client from '../models/User/Client';
+import Commercial from '../models/User/Commercial';
 
 interface FormProps {
-    data?: {quantity: number, product: Product}[],
+    
 }
 
-const FormDevis = ({data = []}:FormProps) => {
-    const [clients, setList] = useState([
-        {first_name: "Jean", last_name: "Claire", role: "client", email: "jean.claire@gmail.com"},
-        {first_name: "Philipe", last_name: "Legrand", role: "prospect", email: "philipe.legrand@gmail.com"},
-        {first_name: "Michelle", last_name: "Vasseur", role: "admin", email: "michelle.vasseur@gmail.com"},
-        {first_name: "Valentine", last_name: "Jile", role: "client", email: "valentine.jile@gmail.com"}
-    ])
-    // Commercial(dropdown) Client(dropdown) Liste de produit (Tableau d'objet -> quantité & une ref)
+const FormDevis = ({  }: FormProps) => {
+    const { user, updateToken } = useContext(AuthContext);
+
+    const [commercials, setCommercials] = useState<Commercial[]>([]);
+    const [clients, setClients] = useState<Client[]>([]);
+    const [commercial, setCommercial] = useState<Commercial>();
+    const [client, setClient] = useState<Client>();
+
     return (
         <div className="form__group">
             <form>
-                <Input field="commercial" type="select" data={clients}/>
-                <Input field="client" type="select" data={clients}/>
-
-                <Input field="quantity" type="text" />
-                <Input field="ref" type="text" />
+                <div className="field-container">
+                    {user!.role_power == 2 && <DropDown label='commercial' name='commercial' value={commercial} setValue={setCommercial} options={commercials} getOptionLabel={(commercial: Commercial) => `${commercial.firstname} ${commercial.lastname}`} />}
+                    <DropDown label='client' name='client' value={client} setValue={setClient} options={clients} getOptionLabel={(client: Client) => `${client.firstname} ${client.lastname}`}/>
+                </div>
                 <Button text="Ajout Devis" type="submit" />
             </form>
         </div>
