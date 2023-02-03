@@ -6,6 +6,8 @@ import Chart from "./Chart";
 import Modal from "./Modal";
 import Table from "./Table";
 import Input from "./Input";
+import FormDevis from "./FormDevis";
+import FormClients from "./FormClient";
 import DevisCard from "./cards/DevisCard";
 import ProductCard from "./cards/ProductCard";
 import FactureCard from "./cards/FactureCard";
@@ -19,6 +21,8 @@ export {
     Modal,
     Table,
     Input,
+    FormDevis,
+    FormClients,
     DevisCard,
     ProductCard,
     FactureCard
